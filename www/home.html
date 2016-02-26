@@ -95,7 +95,7 @@ marker.setMap(map);
    		<div class="inner-rht-menu menu-5">
         	<ul class="wtf-menu">
                 <li><a href="home.html"><i class="fa fa-crosshairs"></i> Me</a></li>
-                <li class="parent"><a href="javascript:void(0)"><i class="fa fa-map-marker"></i>Map </a>
+                <li class="parent"><a href="javascript:void(0)" id="mapmenu"><i class="fa fa-map-marker"></i>Map </a>
                     <ul class="submenu">
                         <li> <a href="javascript:void(0)" onclick="showlot()"> Land Lot</a> </li>
                         <li> <a href="javascript:void(0)" onclick="showonemap()">One Map</a> </li>
@@ -111,6 +111,13 @@ marker.setMap(map);
 <button id="mybtn" onclick="getcurrentpos()"></button>
 </div>
 <script>
+$('#mapmenu').click(
+
+function()
+{
+$('.submenu').show();
+}
+);
 document.addEventListener("DOMContentLoaded", function(event) {
 
 	if (window.DeviceOrientationEvent) {
@@ -154,6 +161,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 <script>
 function showlot()
 {
+$('.submenu').hide();
 $('#mapDiv').css('display','block');
 $('#gMain').css('display','none');
  require(["esri/map", "esri/layers/ArcGISTiledMapServiceLayer", "dojo/domReady!"],
@@ -179,12 +187,14 @@ var _baseMapURL2;
 }
 function showonemap()
 {
+$('.submenu').hide();
 $('#mapDiv').css('display','block');
 $('#gMain').css('display','none');
  OneMap.map.addLayer(new OM.CustomTileServiceLayer());
 }
 function showgooglemap()
 {
+$('.submenu').hide();
 if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showmapval);
     } else { 

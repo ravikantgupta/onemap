@@ -445,7 +445,7 @@ ul.wtf-menu li a:hover{
  border-radius: 40px;
 /* border: 5px solid #444;*/
  overflow: hidden;
- right: 80px;
+ right: 30px;
 }
 
 .compass .disc {
@@ -485,6 +485,8 @@ width: 60px;
 height: 60px;
 
 }
+
+#menu p{font-size: 14PX;}
 
 .compass .disc {
  position: absolute;
