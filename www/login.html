@@ -77,14 +77,14 @@ function()
 	
 	if(data=="success")
 	{
-	window.localStorage.setItem("loggedIn", 1);
-	var uname=document.getElementById("email").value;
-	alert(uname);
-	window.localStorage.setItem("username", uname);
-	
-	window.localStorage.setItem("ifremember", 1);
-	       
-    window.localStorage.setItem("upassword", document.getElementById("password").value);
+		window.localStorage.setItem("loggedIn", 1);
+		var uname=document.getElementById("email").value;
+		
+		window.localStorage.setItem("username", uname);
+		
+		window.localStorage.setItem("ifremember", 1);
+			   
+		window.localStorage.setItem("upassword", document.getElementById("password").value);
 	
 	
 	
@@ -116,14 +116,19 @@ function()
 function setvale()
 {
 	
-	 var value = window.localStorage.getItem("username");
-	 
+		
+	if(window.localStorage.getItem("ifremember")==1)
+	{
 	
-	  alert(window.localStorage.getItem("ifremember"));
-	 alert(value);
+	  document.getElementById("email").value=window.localStorage.getItem("username");
+	  
+	  document.getElementById("password").value=window.localStorage.getItem("upassword");
+	
+	}
+	  
 
 }
-alert(window.localStorage.getItem("username"));
+
 </script>
 
 <div class="for-popup" style="display:none;">
