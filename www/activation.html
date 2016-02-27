@@ -21,6 +21,7 @@
 <span>Thanks!</span>
 <p class="did">Did you get an otp ? </p><p class="entr">Enter it here</p>
 <input type="text" name="otp" id="otp" class="regfrm">
+
 <div style="clear:both;">
 
 <p class="act-tap">Enter wrong information tap <a href="register.html">here</a></p>
@@ -91,8 +92,9 @@ function()
 
 if($(this).val()=="")
 {
-errorflag =1;
-$(this).css({'border-style':'solid','border-color':'#F20505'});
+ errorflag =1;
+ $(this).css({'border-style':'solid','border-color':'#F20505'});
+ $('#errrdg').css('color','red').html("Wrong pin. Try again!");
 }
 else
 {
@@ -132,7 +134,7 @@ window.location.href="home.html";
 else
 {
 $('#loader').css('display','none');
-$('#errrdg').css('color','red').html("Something went wrong try again later!!");
+$('#errrdg').css('color','red').html("Something went wrong try again later!");
 }
 }
 
@@ -142,7 +144,7 @@ $('#errrdg').css('color','red').html("Something went wrong try again later!!");
 }
 else
 {
-$('#errrdg').css('color','red').html("Incorrect OTP :(");
+$('#errrdg').css('color','red').html("Wrong pin. Try again!");
 }
 }
 }
