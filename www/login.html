@@ -26,7 +26,8 @@
 <input type="email" name="email" id="email" value="email.vandanasethi@gmail.com" class="regfrm" placeholder="Enter your email">
 <input type="hidden" name="action" value="login">
 <input type="password" name="password" id="password" class="regfrm" placeholder="Enter your password">
-<div class="remb"><input id="check" type="checkbox"> Remember Me</div>
+
+<div class="sep text-left"><input type="checkbox" id="remember" name="remember">Remember Me</div>
 <a href="index.html"><input type="button" value="back" id="back"></a>
 <input type="button" value="login" id="loginb">
 <p class="lg-for"><a href="javascript:void(0)" id="forget">forget password ?</a></p>
@@ -82,10 +83,13 @@ function()
 		
 		window.localStorage.setItem("username", uname);
 		
+		  if (document.getElementById('remember').checked) {
+            alert("checked");
+        
 		window.localStorage.setItem("ifremember", 1);
 			   
 		window.localStorage.setItem("upassword", document.getElementById("password").value);
-	
+	 } 
 	
 	
 	window.location.href ="home.html"
