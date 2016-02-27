@@ -40,7 +40,9 @@
 function optreset()
 {
 var email = $('#email').val();
-var formdata = 'email='+email+'&action=otpupdate';
+var mobile = $('#mobile').val();
+var cc = $('#cc').val();
+var formdata = 'email='+email+'&mobile='+mobile+'&cc='+cc+'&action=otpupdate';
 $.ajax(
 {
 type:"POST",
@@ -48,16 +50,17 @@ url:"http://judestechnocrats.com/onemapdemo/sg-map/savesgmap.php",
 data:formdata,
 success:function(data)
 {
-var a = data.substring(0,7);
+   
+   var a = data.substring(0,7);
+   
+   var resdata = JSON.parse(data);
 
-if(a=="success")
+if(resdata.msg=="Success")
 {
-
-var max = data.length;
-var otp = data.substring(7,max);
-localStorage["otp"] = otp;
-//alert(otp);
-$('#errrdg').css('color','green').html("<b>An updated otp has been sent to your mail</b>");
+	var otp =resdata.opt;
+	localStorage["otp"] = otp;
+	//alert(otp);
+	$('#errrdg').css('color','green').html("<b>An updated otp has been sent to your mobile No.</b>");
 }
 }
 
@@ -69,7 +72,7 @@ $('#errrdg').css('color','green').html("<b>An updated otp has been sent to your 
 
 }
 var otpm = window.localStorage.getItem("otpm");
-$('#errrdg').css('color','green').html("<b>"+otpm+"</b>");
+$('#errrdg').css('color','green').html("<b>"+otpm+":"+ window.localStorage.getItem("otp")+" </b>");
 var otp = window.localStorage.getItem("otp");
 var email = window.localStorage.getItem("email");
 document.getElementById("email").value = email;

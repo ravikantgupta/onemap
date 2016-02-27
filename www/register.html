@@ -148,8 +148,7 @@ success:function(data)
 {
  var resdata = JSON.parse(data);
 
-  alert(resdata);
-  alert(resdata.msg);
+  
 var a = data.substring(0,7);
 
 if(resdata.msg=="Success")
@@ -157,9 +156,7 @@ if(resdata.msg=="Success")
 
 
 var otp = resdata.opt;
-alert(otp);
 
-alert(resdata.mobileno);
 
 $('#loader').css('display','none');
 window.localStorage.setItem("otpm", resdata.msgcontent);
