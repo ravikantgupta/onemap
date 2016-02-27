@@ -78,11 +78,13 @@ function()
 	if(data=="success")
 	{
 	window.localStorage.setItem("loggedIn", 1);
-	var uname=document.getElementsByName("email").value;
+	var uname=document.getElementById("email").value;
 	alert(uname);
 	window.localStorage.setItem("username", uname);
+	
+	window.localStorage.setItem("ifremember", 1);
 	       
-    window.localStorage.setItem("upassword", document.getElementsByName("password").value);
+    window.localStorage.setItem("upassword", document.getElementById("password").value);
 	
 	
 	
@@ -117,7 +119,7 @@ function setvale()
 	 var value = window.localStorage.getItem("username");
 	 
 	
-	 
+	  alert(window.localStorage.getItem("ifremember"));
 	 alert(value);
 
 }
