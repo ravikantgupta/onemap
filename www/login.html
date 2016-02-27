@@ -81,6 +81,14 @@ function()
 	window.localStorage.setItem("username", document.getElementsByName("email").value);
 	setCookie('uname', document.getElementsByName("email").value, 10);
 	setCookie('upassword', $('#password').val(), 10);
+	
+	
+	    window.localStorage.setItem("username", document.getElementsByName("email").value);
+       
+        window.localStorage.setItem("upassword", document.getElementsByName("password").value);
+	
+	
+	
 	window.location.href ="home.html"
 	$('#loader').css('display','none');
 	}
@@ -125,11 +133,15 @@ function getCookie(cname) {
 
 function setvale()
 {
- alert('ram');
-var uname=getCookie('uname');
-var upwd=getCookie('upassword');
+	 alert('ram');
+	var uname=getCookie('uname');
+	var upwd=getCookie('upassword');
 
-alert(uname+'='+upwd);
+	alert(uname+'='+upwd);
+
+	 var value = window.localStorage.getItem("username");
+	 
+	 alert(value);
 
 }
 </script>
