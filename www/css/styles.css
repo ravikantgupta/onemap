@@ -309,7 +309,7 @@ background-image:url(../images/sg-flag.png);
 
 /* menu-5 */
 ul.wtf-menu{
-	margin: 100px auto 0px;
+	margin: 0;
 	padding: 0;
 	/*width: 960px;*/
 	background: #333;
@@ -620,6 +620,7 @@ ul.wtf-menu li:nth-last-child(3) a {
 }
 .wtf-menu ul.submenu li a{padding:4px 10px;}
 .search-icn{font-size:17px;}
+#cnti-box-tp input{width: 86px;}
 }
 
 @media (max-width:414px){
@@ -648,7 +649,7 @@ ul.wtf-menu li:nth-last-child(3) a {
 #txtSearchText{width: 250px;/* height: 25px;*/}
 #search-map{padding: 0 11px;
     height: 25px;}
-#cnti-box-tp input{width: 86px;}
+
 .login-page .login-lft a{padding:10px 0;}
 .login-page .login-rgt a{padding:10px 0;}
 .login-page .register{font-size:17px;}

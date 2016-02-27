@@ -265,9 +265,8 @@ function()
 {
    if(jQuery('#srchcont').hasClass('rwded'))
    {
-	 //  $(".container").removeClass("rwded");
-	  window.history.go(-1);
-      window.history.back();
+	 $(".container").removeClass("rwded");
+	window.location.href="index.html";
 	  
    }else{
     $(".container").addClass("rwded");
