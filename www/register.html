@@ -148,18 +148,21 @@ success:function(data)
 {
  var resdata = JSON.parse(data);
 
-alert(resdata);
+  alert(resdata);
   alert(resdata.msg);
 var a = data.substring(0,7);
 
-if(a=="success")
+if(resdata.msg=="Success")
 {
 
-var max = data.length;
-var otp = data.substring(7,max);
-//alert(email);
+
+var otp = resdata.opt;
+alert(otp);
+
+alert(resdata.mobileno);
+
 $('#loader').css('display','none');
-window.localStorage.setItem("otpm", "An otp has been sent to your email");
+window.localStorage.setItem("otpm", resdata.msgcontent);
 window.localStorage.setItem("email", $('#email').val());
 window.localStorage.setItem("mobile", $('#mobileno').val());
 window.localStorage.setItem("password", $('#password').val());
