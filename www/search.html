@@ -194,17 +194,20 @@ window.localStorage.setItem('y-cordinate',yVal);
 
  <div class="rht-menu" style="display:none;" id="btmenu">
    		<div class="inner-rht-menu menu-5">
-        	<ul class="wtf-menu">
-                <li><a href="home.html"><i class="fa fa-crosshairs"></i> Me</a></li>
-                <li class="parent"><a href="javascript:void(0)" id="mapmenu"><i class="fa fa-map-marker"></i>Map </a>
+        				
+			<ul class="wtf-menu">
+                <li><a href="home.html"><img src="images/me.png" /></a></li>
+                <li> <a href="javascript:void(0)" onclick="removealllayer()"><img src="images/clear.png" /></a> </li>
+                <li class="parent"><a href="javascript:void(0)" id="mapmenu"><img src="images/map.png" /></a>
                     <ul class="submenu">
-                        <li> <a href="javascript:void(0)" onclick="showlot()">Land Lot</a> </li>
-                        <li> <a href="javascript:void(0)" onclick="showonemap()">One Map</a> </li>
                         <li> <a href="javascript:void(0)" onclick="showgooglemap()">Google Map</a> </li>
+                        <li> <a href="javascript:void(0)" onclick="showonemap()">One Map</a> </li>
+                        <li> <a href="javascript:void(0)" onclick="showlot()"> Land Lot</a> </li>
+                        <span class="carat"></span>
                     </ul>
                 </li>
-                <li> <a href="javascript:void(0)" onclick="removealllayer()"><i class="fa fa-times"></i>Clear</a> </li>
             </ul>
+			
         </div><!--inner-rht-menu-->
    </div><!--rht-menu-->
 </div>
@@ -262,7 +265,8 @@ function()
 {
    if(jQuery('#srchcont').hasClass('rwded'))
    {
-   $(".container").removeClass("rwded");
+	   $(".container").removeClass("rwded");
+	    navigator.app.backHistory();
    }else{
     $(".container").addClass("rwded");
   }

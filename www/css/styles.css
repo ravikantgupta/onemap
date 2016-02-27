@@ -75,9 +75,9 @@ body{font-family: Lato; overflow:hidden;}
     list-style: none;
 	padding: 0;
     list-style: none;
-    height: 90%;
+    height: 100%;
     background: #fff;
-	    padding: 45px 8px 0;
+	    padding: 0 8px 0;
     
     border-radius: 0 10px 10px 0;}
 
@@ -113,7 +113,7 @@ body{font-family: Lato; overflow:hidden;}
 	
 #txtSearchText{height: 35px;
     border: 1px solid #ddd;
-    margin-top: 25px;
+    margin-top: 35px;
     margin-left: 85px;
     width: 300px;
     box-shadow: 0 0px 4px #eee;
@@ -148,13 +148,13 @@ body{font-family: Lato; overflow:hidden;}
 .dijitReset{padding: 0px 3px !important; background-color: rgba(255,255,255,1);}
 .dijit.dijitReset.dijitSliderV tbody{border: 1px solid #e5e5e5;}
 #cnti-box-tp{position: absolute; top:0; right:0; background:transparent; height:100vh;}
-.inn-cnti{position: absolute;
-    bottom: 75px;
+.inn-cnti{position: absolute; z-index:9;
+    bottom: 80px;
     padding: 3px 8px !important;
     background-color: rgba(255,255,255,1);
     box-shadow: 0px 0px 3px #999;
     font-size:12px;
-    right: 0;
+    right: 10px;
     border-radius: 4px;
 	min-width: 130px;}
 .hm #cnti-box-tp{left: 77px;}
@@ -169,7 +169,7 @@ body{font-family: Lato; overflow:hidden;}
 
 .search-icn{position: absolute;
     left: 95px;
-    top: 34px;
+    top: 44px;
 	color: #5e3925;}
 
 .headingcat td{font-weight: bold; font-size: 13px; border-bottom: 0 !important;
@@ -355,12 +355,12 @@ ul.wtf-menu li:nth-last-child(3) a:hover{moz-border-radius:25px 0 0 25px; -webki
     background: #fff;
     position: absolute;
     bottom: 67px;
-    left: -75px;
+    left: -80px;
     display: none;
     -webkit-box-shadow: 0 -1px 2px 0 rgba(0,0,0,.3);
     box-shadow: 0 -1px 2px 0 rgba(0,0,0,.3);
-    border-radius: 4px;
-}
+    border-radius: 4px; z-index:9;
+ }
 
 .wtf-menu ul.submenu li a{padding: 0px 15px;}
 
@@ -480,7 +480,7 @@ ul.wtf-menu li:nth-last-child(3) a:hover{moz-border-radius:25px 0 0 25px; -webki
  background-size: 100%;
 }
 .newcont .flip-dv{display:none;}
-.menu-top-icon{position:absolute; padding:30px 4px 0;  margin:-23px 0 0 25px; background:url(../images/submenu.png); height:46px; background:url(../images/submenu.png); border-radius:0 0 25px 25px; -webkit-border-radius:0 0 25px 25px; -moz-border-radius:0 0 25px 25px; color:#fff; font-weight:bold; font-size:13px; cursor:pointer; border:3px double #F2BD72;}
+.menu-top-icon{position:absolute; padding:30px 4px 0;  margin:-23px 0 0 25px; background:url(../images/submenu.png); height:46px; background:url(../images/submenu.png); border-radius:0 0 25px 25px; -webkit-border-radius:0 0 25px 25px; -moz-border-radius:0 0 25px 25px; color:#fff; font-weight:bold; font-size:13px; cursor:pointer; border:3px double #F2BD72; display:none;}
 .menu-top-icon img{width:40px;}
 	
 .carat {
@@ -508,7 +508,7 @@ ul.wtf-menu li:nth-last-child(3) a:hover{moz-border-radius:25px 0 0 25px; -webki
 	
 @media (max-width:1024px){
 	html{overflow-x: hidden; overflow-y:hidden;}
-	.inn-cnti{width:132px;}
+	.inn-cnti{width:134px;}
 .login-page .home{margin:10% 0 0;}
 #txtSearchText{border-radius: 25px;}
 
