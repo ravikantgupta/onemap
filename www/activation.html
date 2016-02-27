@@ -94,7 +94,7 @@ if($(this).val()=="")
 {
  errorflag =1;
  $(this).css({'border-style':'solid','border-color':'#F20505'});
- $('#errrdg').css('color','red').html("Wrong pin. Try again!");
+ 
 }
 else
 {
@@ -108,7 +108,10 @@ $('#activation').click(
 function()
 {
  if($('#otp').val()=="") { errorflag=1;
-    $('#otp').css({'border-style':'solid','border-color':'#F20505'}); }
+    $('#otp').css({'border-style':'solid','border-color':'#F20505'});
+    
+	$('#errrdg').css('color','red').html("Wrong pin. Try again!");
+	}
 if(errorflag==0)
 {
 var otp = window.localStorage.getItem("otp");
