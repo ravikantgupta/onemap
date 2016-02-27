@@ -78,7 +78,9 @@ function()
 	if(data=="success")
 	{
 	window.localStorage.setItem("loggedIn", 1);
-	window.localStorage.setItem("username", document.getElementsByName("email").value);
+	var uname=document.getElementsByName("email").value;
+	alert(uname);
+	window.localStorage.setItem("username", uname);
 	       
     window.localStorage.setItem("upassword", document.getElementsByName("password").value);
 	
