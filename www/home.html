@@ -51,6 +51,7 @@ marker.setMap(map);
 	<img src="images/sg-logo.png"/>
 <!--<i class="fa fa-bars"></i>--></div></div>
 <div id="panel">
+<div class="menu-top-icon"><img src="images/top-bt.png" /></div>
 <ul>
 <li>
 <a href="home.html"><i class="fa fa-home"></i> Home</a>
@@ -94,15 +95,16 @@ marker.setMap(map);
    <div class="rht-menu">
    		<div class="inner-rht-menu menu-5">
         	<ul class="wtf-menu">
-                <li><a href="home.html"><i class="fa fa-crosshairs"></i> Me</a></li>
-                <li class="parent"><a href="javascript:void(0)" id="mapmenu"><i class="fa fa-map-marker"></i>Map </a>
+                <li><a href="home.html"><img src="images/me.png" /></a></li>
+                <li> <a href="javascript:void(0)" onclick="removealllayer()"><img src="images/clear.png" /></a> </li>
+                <li class="parent"><a href="javascript:void(0)" id="mapmenu"><img src="images/map.png" /></a>
                     <ul class="submenu">
-                        <li> <a href="javascript:void(0)" onclick="showlot()"> Land Lot</a> </li>
-                        <li> <a href="javascript:void(0)" onclick="showonemap()">One Map</a> </li>
                         <li> <a href="javascript:void(0)" onclick="showgooglemap()">Google Map</a> </li>
+                        <li> <a href="javascript:void(0)" onclick="showonemap()">One Map</a> </li>
+                        <li> <a href="javascript:void(0)" onclick="showlot()"> Land Lot</a> </li>
+                        <span class="carat"></span>
                     </ul>
                 </li>
-                <li> <a href="javascript:void(0)" onclick="removealllayer()"><i class="fa fa-times"></i>Clear</a> </li>
             </ul>
         </div><!--inner-rht-menu-->
    </div><!--rht-menu-->
@@ -276,9 +278,7 @@ OneMap.showLocation(x,y);
 <script>
 function logout()
 {
-
- 
- window.localStorage.removeItem("loggedIn");
+window.localStorage.removeItem("loggedIn");
 window.location.href="index.html";
 }
 </script>

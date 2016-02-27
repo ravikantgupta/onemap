@@ -114,7 +114,7 @@ body{font-family: Lato; overflow:hidden;}
 #txtSearchText{height: 35px;
     border: 1px solid #ddd;
     margin-top: 25px;
-    margin-left: 80px;
+    margin-left: 85px;
     width: 300px;
     box-shadow: 0 0px 4px #eee;
 	padding: 0 5px;
@@ -130,12 +130,15 @@ body{font-family: Lato; overflow:hidden;}
 #divResults tr th{padding-bottom: 12px;}
 .esriLargeSliderVertical{    margin-left: 10px !important;
     margin-top:50px !important; }
-#divResults tr td{border-bottom: 1px solid #e5e5e5;
+#divResults tr td {
+    border-bottom: 1px solid #e5e5e5;
     margin-bottom: 65px;
-    height: 28px;     padding-left: 14px;
-	    padding-bottom: 3px;
-    vertical-align: middle;}
-#divResults tr td a{text-decoration:none; font-size:15px; color:gray;}
+    padding-left: 14px;
+    vertical-align: middle;
+    padding-top: 5px !important;
+    padding-bottom: 5px;
+}
+#divResults tr td a{text-decoration:none; font-size:13px; color:gray;}
 #divMain{height:100vh !important; width:100% !important;}
 #gMain{height:100vh !important; width:100% !important;}
 #mapDiv{height:100vh !important; width:100% !important;}
@@ -165,11 +168,11 @@ body{font-family: Lato; overflow:hidden;}
 #loader .fa-spinner{color:#fff; position: absolute; top: 50%;}
 
 .search-icn{position: absolute;
-    left: 90px;
+    left: 95px;
     top: 34px;
 	color: #5e3925;}
 
-.headingcat td{font-weight: bold; font-size: 16px; border-bottom: 0 !important;
+.headingcat td{font-weight: bold; font-size: 13px; border-bottom: 0 !important;
     background: #eee;
     padding-left: 14px !important;
     padding-right: 14px !important;
@@ -352,7 +355,7 @@ ul.wtf-menu li:nth-last-child(3) a:hover{moz-border-radius:25px 0 0 25px; -webki
     background: #fff;
     position: absolute;
     bottom: 67px;
-    left: -30px;
+    left: -75px;
     display: none;
     -webkit-box-shadow: 0 -1px 2px 0 rgba(0,0,0,.3);
     box-shadow: 0 -1px 2px 0 rgba(0,0,0,.3);
@@ -493,7 +496,7 @@ ul.wtf-menu li:nth-last-child(3) a:hover{moz-border-radius:25px 0 0 25px; -webki
     position: absolute;
     background: none;
     color: #fff;
-    right: 42%;
+    right: 12%;
 }
 .text-left{text-align:left;}
 .text-left input[type="checkbox"]{    height: 20px;
@@ -512,8 +515,8 @@ ul.wtf-menu li:nth-last-child(3) a:hover{moz-border-radius:25px 0 0 25px; -webki
 
 .compass {
     position: absolute;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     right: 0;
     top: 0;
     margin: 0;
@@ -527,8 +530,8 @@ ul.wtf-menu li:nth-last-child(3) a:hover{moz-border-radius:25px 0 0 25px; -webki
     left: 20px;
     z-index: 200;
     background: url(../images/compas.png);
-    width: 80px;
-    height: 80px;
+    width: 65px;
+    height: 65px;
     background-size: 100%;
 }
 
@@ -538,8 +541,8 @@ ul.wtf-menu li:nth-last-child(3) a:hover{moz-border-radius:25px 0 0 25px; -webki
     left: 29px;
     z-index: 1000;
     background: url('http://dev.rvltn.eu/compass/arrow.svg');
-    width: 70px;
-    height: 70px;
+    width: 54px;
+    height: 54px;
     background-size: 90%
 }
 
@@ -594,7 +597,7 @@ width: 46.5%;
 #content{padding-left: 0;}
 #txtSearchText{width: 320px;/*     height: 28px;*/}
 #search-map{padding: 0 22px; height: 28px; font-size: 14px;}
-#divResults tr td a{font-size: 14px;}
+#divResults tr td a{font-size: 12px; line-height:20px;}
 #panel{padding-left: 0;}
 #panel ul li a{font-size: 18px;}
 .login-page .logo{font-size:40px;}
