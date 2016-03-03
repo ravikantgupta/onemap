@@ -61,7 +61,7 @@ if(resdata.msg=="Success")
 	var otp =resdata.opt;
 	localStorage["otp"] = otp;
 	//alert(otp);
-	$('#errrdg').css('color','green').html("<b>An updated otp has been sent to your mobile No.</b>");
+	$('#errrdg').css('color','green').html("<b>An updated otp has been sent to your mobile no.</b>");
 }
 }
 
@@ -73,7 +73,7 @@ if(resdata.msg=="Success")
 
 }
 var otpm = window.localStorage.getItem("otpm");
-$('#errrdg').css('color','green').html("<b>"+otpm+":"+ window.localStorage.getItem("otp")+" </b>");
+$('#errrdg').css('color','green').html("<b>"+otpm+" </b>");
 var otp = window.localStorage.getItem("otp");
 var email = window.localStorage.getItem("email");
 document.getElementById("email").value = email;
