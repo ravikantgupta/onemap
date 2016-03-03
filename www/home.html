@@ -42,10 +42,36 @@ marker.setMap(map);
  var OneMap = new GetOneMap('mapDiv','SM');  
 
 </script>
+<script>
 
+  function sethomeption()
+  {
+     var action=getParameter('action');
+	 
+	 if(action=='back')
+	 {
+	   jQuery('#flip').click();
+	 
+	 }
+	 
+  }
+  
+  function getParameter(theParameter) { 
+  var params = window.location.search.substr(1).split('&');
+ 
+  for (var i = 0; i < params.length; i++) {
+    var p=params[i].split('=');
+	if (p[0] == theParameter) {
+	  return decodeURIComponent(p[1]);
+	}
+  }
+  return false;
+}
+
+</script>
  
 </head>
-<body >
+<body onload="sethomeption()">
 <div class="container hm">
 <div class="flip-dv"><div id="flip">
 	<img src="images/sg-logo.png"/>
@@ -71,8 +97,8 @@ marker.setMap(map);
 <div id="notice" style="display:none"></div>
 
 	<div class="compass">
-		<div class="arrow"></div>
-		<div class="disc" id="compassDiscImg"></div>
+		<div class="arrow" id="compassDiscImg"></div>
+		<div class="disc" ></div>
 	</div>
 
 	<div class="orientation-data" style="display:none">
