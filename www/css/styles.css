@@ -179,7 +179,7 @@ body{font-family: Lato; overflow:hidden;}
     height: 24px !important; padding-top: 0px !important; text-transform: uppercase;}
 
 
-.login-page{background:url(../images/login-bg.png) left top no-repeat; background-size:cover; height:100vh; width:100%; margin:0; padding:0; text-align:center; float:left; color:#fff; font-family: 'Roboto', sans-serif;}
+.login-page{background:#585859 url(../images/login-bg.png) left top no-repeat; background-size:cover; height:100vh; width:100%; margin:0; padding:0; text-align:center; float:left; color:#fff; font-family: 'Roboto', sans-serif;}
 
 .login-page .login-lft{width:49%; float:left; text-align:right; position:relative; top:40%; text-transform:uppercase;}
 .login-page .login-rgt{width:49%; float:right; text-align:left; position:relative; top:40%; text-transform:uppercase;}
@@ -219,7 +219,7 @@ body{font-family: Lato; overflow:hidden;}
 .act-tap{margin-bottom: 7px;}
 .act-res{margin-bottom: 20px;}
 .act-tap a, .act-res a{color: #18fcff;}
-#errrdg{color:#2eff18 !important; margin-top: 20px;}
+#errrdg{color:#2eff18 !important; margin-top: 20px; display:none;}
 
 .for-popup{background: rgba(0,0,0,0.6); height: 100%; width: 100%; position: absolute; top: 0; left: 0;}
 .popup-box{background:#030303;
@@ -474,7 +474,7 @@ ul.wtf-menu li:nth-last-child(3) a:hover{moz-border-radius:25px 0 0 25px; -webki
  top: 20px;
  left: 20px;
  z-index: 1000;
- background: url('http://dev.rvltn.eu/compass/arrow.svg');
+ background: url(../images/compas-arrow.png);
  width: 100px;
  height: 100px;
  background-size: 100%;
@@ -537,14 +537,14 @@ ul.wtf-menu li:nth-last-child(3) a:hover{moz-border-radius:25px 0 0 25px; -webki
 }
 
 .compass .arrow {
-    position: absolute;
+position: absolute;
     top: 29px;
     left: 29px;
     z-index: 1000;
-    background: url('http://dev.rvltn.eu/compass/arrow.svg');
-    width: 54px;
-    height: 54px;
-    background-size: 90%
+    background: url(../images/compas-arrow.png);
+    width: 47px;
+    height: 47px;
+    background-size: 100%;
 }
 
 }
@@ -578,6 +578,8 @@ width: 46.5%;
 .login-page .login-field{top: 10%;}
 #mobileno{width: 80%;}
 #countries{width: 15%; padding-left: 6px; font-size: 16px;}
+#activate span{margin-top:0;}
+
 }
 
 @media (max-width:736px){
