@@ -143,7 +143,15 @@ $('#mapmenu').click(
 
 function()
 {
-$('.submenu').show();
+   if ( $('.submenu').css('display') == 'none')
+    {
+       $('.submenu').show();
+    }else
+	{
+	  $('.submenu').hide();
+	}
+  
+ 
 }
 );
 document.addEventListener("DOMContentLoaded", function(event) {
