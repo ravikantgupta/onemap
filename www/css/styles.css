@@ -219,7 +219,7 @@ body{font-family: Lato; overflow:hidden;}
 .act-tap{margin-bottom: 7px;}
 .act-res{margin-bottom: 20px;}
 .act-tap a, .act-res a{color: #18fcff;}
-#errrdg{color:#2eff18 !important; margin-top: 20px; display:none;}
+#errrdg{color:#2eff18 !important; margin-top: 20px;}
 
 .for-popup{background: rgba(0,0,0,0.6); height: 100%; width: 100%; position: absolute; top: 0; left: 0;}
 .popup-box{background:#030303;
