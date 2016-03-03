@@ -24,7 +24,7 @@
 <div class="logo">SG Land</div>
 
 <div class="field">
-    <input type="number" name="email" id="email"  class="regfrm" placeholder="Enter your mobile No.">
+    <input type="number" name="email" id="email"  class="regfrm" placeholder="Enter your mobile no.">
 	<span id="emailerror" class="error"></span>
 </div>
 <input type="hidden" name="action" value="login">
@@ -56,7 +56,7 @@ errorflag =1;
  
      if(id=='email')
 	 {
-	    jQuery('#'+id+'error').html('Please enter mobile No.');
+	    jQuery('#'+id+'error').html('Please enter mobile no.');
 	 }
 	if(id=='password')
 	 {
@@ -113,7 +113,7 @@ function()
 	
 	
 	window.location.href ="home.html"
-	$('#loader').css('display','none');
+	//$('#loader').css('display','none');
 	}
 	else
 	{
@@ -144,6 +144,7 @@ function setvale()
 	if(window.localStorage.getItem("ifremember")==1)
 	{
 	
+	   document.getElementById("remember").checked = true;
 	  document.getElementById("email").value=window.localStorage.getItem("username");
 	  
 	  document.getElementById("password").value=window.localStorage.getItem("upassword");

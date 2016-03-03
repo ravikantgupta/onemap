@@ -25,7 +25,7 @@
             <option value="+65" selected>+65</option>
             
             </select>
-            <input type="number" name="mobileno" id="mobileno"  class="regfrm" placeholder="Enter your mobile">
+            <input type="number" name="mobileno" id="mobileno"  class="regfrm" placeholder="Enter your mobile no.">
             <div id="errmobileno" class="error"> </div>
             <input type="email" name="email" id="email" class="regfrm email" placeholder="Enter your email">
             <div id="erremail" class="error"> </div>
@@ -78,7 +78,7 @@ errorflag =1;
  
 			 if(id=='mobileno')
 			 {
-				jQuery('#err'+id).html('Please enter mobile No.');
+				jQuery('#err'+id).html('Please enter mobile no.');
 			 }
 			 
 			 if(id=='email')
@@ -86,11 +86,7 @@ errorflag =1;
 				jQuery('#err'+id).html('Please enter email');
 			 }
 			 
-			 if(id=='mobileno')
-			 {
-				jQuery('#err'+id).html('Please enter mobile No.');
-			 }
-			 
+			 	 
 			 
 			 
 			if(id=='password')
@@ -144,7 +140,7 @@ errorflag =0;
 else
 {
 errorflag =1;
-   $('#erremail').html('Please enter valid mobile No.');
+   $('#erremail').html('Please enter valid email');
 
 }
 }
@@ -153,7 +149,7 @@ $('#Go').click(function()
 {
   if($('#mobileno').val()=="") {
 			   errorflag=1;
-			     $('#errmobileno').html('Please enter mobile No.');
+			     $('#errmobileno').html('Please enter mobile no.');
 	
 	         }
  
@@ -162,7 +158,7 @@ $('#Go').click(function()
 		$('#erremail').html('Please enter email');
 	} 
 	else if(!regex.test($('#email').val())) { errorflag =1;
-    $('#erremail').html('Please enter valid mobile No.'); } 
+    $('#erremail').html('Please enter valid email'); } 
     if($('#password').val()=="") { errorflag =1;
     $('#errpassword').html('Please enter password'); }
  

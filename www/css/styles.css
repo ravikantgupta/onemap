@@ -589,6 +589,7 @@ width: 46.5%;
 #txtSearchText{padding-left: 30px; font-size:13px;}
 #txtSearchText{height: 35px;}
 .cencel-pass, .send-pass{width: 45%;}
+#cnti-box-tp input{width: 86px;}
 }
 
 
@@ -621,7 +622,7 @@ ul.wtf-menu li:nth-last-child(3) a {
 }
 .wtf-menu ul.submenu li a{padding:4px 10px;}
 .search-icn{font-size:17px;}
-#cnti-box-tp input{width: 86px;}
+
 }
 
 @media (max-width:414px){
@@ -631,7 +632,7 @@ ul.wtf-menu li:nth-last-child(3) a {
 .login-page .login-field {
     top: 25%;
 }
-.login-page .home{margin:10% 0 0 0;}
+.login-page .home{margin:0;}
 .login-page .register{overflow-x:auto; height:auto;}
 .login-page .login-field input[type="button"]{width: 48.5%;}
 #back{margin-right: 3%;}
