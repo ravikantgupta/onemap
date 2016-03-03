@@ -23,10 +23,15 @@
 
 <div class="logo">SG Land</div>
 
-<input type="email" name="email" id="email"  class="regfrm" placeholder="Enter your email">
+<div class="field">
+    <input type="number" name="email" id="email"  class="regfrm" placeholder="Enter your mobile No.">
+	<span id="emailerror" class="error"></span>
+</div>
 <input type="hidden" name="action" value="login">
-<input type="password" name="password" id="password" class="regfrm" placeholder="Enter your password">
-
+<div class="field">
+    <input type="password" name="password" id="password" class="regfrm" placeholder="Enter your password">
+	<span id="passworderror" class="error"></span>
+</div>
 <div class="sep text-left"><input type="checkbox" id="remember" name="remember">Remember Me</div>
 <a href="index.html"><input type="button" value="back" id="back"></a>
 <input type="button" value="login" id="loginb">
@@ -46,12 +51,25 @@ function()
 if($(this).val()=="")
 {
 errorflag =1;
-$(this).css({'border-style':'solid','border-color':'#F20505'});
+
+	var id=jQuery(this).attr('id');
+ 
+     if(id=='email')
+	 {
+	    jQuery('#'+id+'error').html('Please enter mobile No.');
+	 }
+	if(id=='password')
+	 {
+	    jQuery('#'+id+'error').html('Please enter password');
+	 }
+
+   
 }
 else
 {
+  var id=jQuery(this).attr('id');
 errorflag =0;
-$(this).css({'border-style':'','border-color':''});
+ jQuery('#'+id+'error').html('');
 
 }
 }
@@ -61,9 +79,12 @@ function()
 {
 
   if($('#email').val()=="") { errorflag=1;
-    $('#email').css({'border-style':'solid','border-color':'#F20505'}); }
+    jQuery('#emailerror').html('Please enter mobile No.'); }
 	if($('#password').val()=="") { errorflag =1;
-    $('#password').css({'border-style':'solid','border-color':'#F20505'}); }
+   
+       jQuery('#passworderror').html('Please enter password');
+	
+	}
 	if(errorflag==0)
 	{
 	$('#loader').css('display','block');
@@ -97,7 +118,7 @@ function()
 	else
 	{
 	$('#loader').css('display','none');
-	$('#errrdg').css('color','red').html("Wrong email or password , Please try a correct combination.");
+	$('#errrdg').css('color','red').html("Wrong mobile or password , Please try a correct combination.");
 	
 	}
 	}

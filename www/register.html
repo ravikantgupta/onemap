@@ -26,14 +26,14 @@
             
             </select>
             <input type="number" name="mobileno" id="mobileno"  class="regfrm" placeholder="Enter your mobile">
-            <div id="errmobileno"> </div>
+            <div id="errmobileno" class="error"> </div>
             <input type="email" name="email" id="email" class="regfrm email" placeholder="Enter your email">
-            <div id="erremail"> </div>
+            <div id="erremail" class="error"> </div>
             <input type="password" name="password" id="password" class="regfrm" placeholder="Enter your password">
-            <div id="errpassword"> </div>
+            <div id="errpassword" class="error"> </div>
             <input type="password" name="confirmpass" id="confirmpass" class="regfrm cnfrmpas" placeholder="Confirm password">
 			<input type="hidden" name="action" value="authenticate">
-            <div id="errconfirmpass"> </div>
+            <div id="errconfirmpass" class="error"> </div>
             <a href="index.html"><input type="button" value="Back" id="back"></a>
             <input type="button" value="Go" id="Go" >
             <p class="reg-terms"><a href="http://judestechnocrats.com/onemapdemo/sg-map/terms.html">Terms & condition  </a></p>
@@ -72,33 +72,61 @@ function()
 if($(this).val()=="")
 {
 errorflag =1;
-$(this).css({'border-style':'solid','border-color':'#F20505'});
+
+                
+				var id=jQuery(this).attr('id');
+ 
+			 if(id=='mobileno')
+			 {
+				jQuery('#err'+id).html('Please enter mobile No.');
+			 }
+			 
+			 if(id=='email')
+			 {
+				jQuery('#err'+id).html('Please enter email');
+			 }
+			 
+			 if(id=='mobileno')
+			 {
+				jQuery('#err'+id).html('Please enter mobile No.');
+			 }
+			 
+			 
+			 
+			if(id=='password')
+			 {
+				jQuery('#err'+id).html('Please enter password');
+			 }
+
+
+             
 }
 else
 {
 errorflag =0;
-$(this).css({'border-style':'','border-color':''});
+	var id=jQuery(this).attr('id');
+    jQuery('#err'+id).html('');
 
 }
 }
 );
 $('.cnfrmpas').blur(
 
-function()
-{
+			function()
+			{
 
 
-if($(this).val()!=$('#password').val())
-{
-errorflag =1;
-$(this).css({'border-style':'solid','border-color':'#F20505'});
-}
-else
-{
-$(this).css({'border-style':'','border-color':''});
-errorflag =0;
-}
-}
+			if($(this).val()!=$('#password').val())
+			{
+			   errorflag =1;
+			  $('#errconfirmpass').html('Password and Confirm password not matched');
+			}
+			else
+			{
+			 $('#errconfirmpass').html('');
+			  errorflag =0;
+			}
+			}
 );
 $('.email').blur(
 
@@ -110,32 +138,36 @@ function()
 if(regex.test($(this).val()))
 {
 errorflag =0;
-$(this).css({'border-style':'','border-color':''});
+     $('#erremail').html('');
 
 }
 else
 {
 errorflag =1;
-$(this).css({'border-style':'solid','border-color':'#F20505'});
+   $('#erremail').html('Please enter valid mobile No.');
 
 }
 }
 );
 $('#Go').click(function()
 {
-  if($('#mobileno').val()=="") { errorflag=1;
-    $('#mobileno').css({'border-style':'solid','border-color':'#F20505'}); }
+  if($('#mobileno').val()=="") {
+			   errorflag=1;
+			     $('#errmobileno').html('Please enter mobile No.');
+	
+	         }
  
     if($('#email').val()=="") {
-	errorflag =1;
-    $('#email').css({'border-style':'solid','border-color':'#F20505'}); } 
+		errorflag =1;
+		$('#erremail').html('Please enter email');
+	} 
 	else if(!regex.test($('#email').val())) { errorflag =1;
-    $('#email').css({'border-style':'solid','border-color':'#F20505'}); } 
+    $('#erremail').html('Please enter valid mobile No.'); } 
     if($('#password').val()=="") { errorflag =1;
-    $('#password').css({'border-style':'solid','border-color':'#F20505'}); }
+    $('#errpassword').html('Please enter password'); }
  
     if($('#confirmpass').val()!=$('#password').val()) { errorflag =1;
-    $('#confirmpass').css({'border-style':'solid','border-color':'#F20505'}); }
+     $('#errconfirmpass').html('Password and Confirm password not matched'); }
 if(errorflag==0)
 {
 $('#loader').css('display','block');
