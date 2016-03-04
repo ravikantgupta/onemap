@@ -154,7 +154,7 @@ window.localStorage.setItem('y-cordinate',yVal);
 <div id="content" class="search-page">
 <div id="card"> 
   <div class="front"> 
-  <div id="menu"><p>Menu</p></div>
+  <div onclick="javascript:history.go(-1)" id="menu"><p>Menu</p></div>
   <form onsubmit="return GetSearchData()">
   <input type="search" id="txtSearchText" name="Search" />
   <i class="fa fa-search search-icn"></i>
@@ -266,14 +266,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 </script>
 <script>
-$('#menu').click(
-function()
-{
-   window.location.href="home.html?action=back";
 
-}
-
-);
 function showlot()
 {
 $('.submenu').hide();
