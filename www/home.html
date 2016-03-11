@@ -38,6 +38,11 @@ window.localStorage.setItem('y-marker',y);
 var markerId = getMarkerUniqueId(x, y); 
 markers[markerId] = marker;
 marker.setMap(map);
+
+
+var srchstring='<a href="uramp.html?x='+x+'&y='+y+'&txt=DELHI ROAD">URA MP2014</a>';
+jQuery('#uramenu').html(srchstring);
+
 } 
  var OneMap = new GetOneMap('mapDiv','SM');  
 
