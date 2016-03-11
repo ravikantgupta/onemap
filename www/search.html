@@ -89,7 +89,10 @@ marker.setMap(map);
 					htmlStr = htmlStr + "<tr>";
 					htmlStr = htmlStr + "<td>";
 					//console.log(row.X +","+ row.Y);
-					htmlStr = htmlStr + "<a href='JavaScript:ZoomTo("+ row.X +","+ row.Y +")'>" + row.SEARCHVAL + "</a>";
+					
+					var srrs='"'+row.SEARCHVAL+'"';
+					
+					htmlStr = htmlStr + "<a onclick='srchrslt("+ row.X +","+ row.Y +"," + srrs + ")' href='JavaScript:ZoomTo("+ row.X +","+ row.Y +")'>" + row.SEARCHVAL + "</a>";
 					htmlStr = htmlStr + "</td>";
 					htmlStr = htmlStr + "</tr>";
 					cathtml='';
@@ -200,6 +203,7 @@ window.localStorage.setItem('y-cordinate',yVal);
                 <li> <a href="javascript:void(0)" onclick="removealllayer()"><img src="images/clear.png" /></a> </li>
                 <li class="parent"><a href="javascript:void(0)" id="mapmenu"><img src="images/map.png" /></a>
                     <ul class="submenu" style="display:none;">
+					 <li id="uramenu"> <a href="uramp.html" >URA MP2014</a> </li>
                         <li> <a href="javascript:void(0)" onclick="showgooglemap()">Google Map</a> </li>
                         <li> <a href="javascript:void(0)" onclick="showonemap()">One Map</a> </li>
                         <li> <a href="javascript:void(0)" onclick="showlot()"> Land Lot</a> </li>
@@ -412,6 +416,16 @@ var _baseMapURL2;
 $("#card").flip({
   trigger: 'manual'
 });
+
+function srchrslt(x,y,txt){
+
+ 
+ var srchstring='<a href="uramp.html?x='+x+'&y='+y+'&txt='+txt+'">URA MP2014</a>';
+ 
+ jQuery('#uramenu').html(srchstring);
+
+
+}
 </script>
 </body>
 </html>
