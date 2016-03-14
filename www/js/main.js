@@ -1401,7 +1401,7 @@
 							  var wcbpoint = new esri.geometry.Point(features[0].x,features[0].y,new esri.SpatialReference({ wkid: 4326 }));
 							  var marker = new esri.Graphic(wcbpoint,symbol);
 							  map.graphics.add(marker); 
-							  addInfowindow(wcbpoint,'Address',result);
+							  //addInfowindow(wcbpoint,'Address',result);
 							  map.setZoom(12);
 							  map.centerAt(wcbpoint);
 							 // map.centerAndZoom(wcbpoint,17);
@@ -1412,7 +1412,7 @@
 						else{
 						//end  by lavanya satuluri 18-sept-2014 to watercolor bm - search zoom 
 						 addMarker(point,1);
-						 addInfowindow(point,'Address',result);
+						// addInfowindow(point,'Address',result);
 						 map.setZoom(6);
 						 map.centerAt(point);
 						 }  //added by lavanya satuluri 18-sept-2014 to watercolor bm - search zoom 
