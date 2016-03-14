@@ -42,10 +42,7 @@ window.localStorage.setItem('y-marker',y);
 	marker.setMap(map);
 
 
-	var srchstring='<a href="uramp.html?x='+x+'&y='+y+'&txt=DELHI ROAD">URA MP2014</a>';
-	jQuery('#uramenu').html(srchstring);
-
-	alert(srchstring);
+	
 
 
 
@@ -136,7 +133,10 @@ window.localStorage.setItem('y-marker',y);
                 <li> <a href="javascript:void(0)" onclick="removealllayer()"><img src="images/clear.png" /></a> </li>
                 <li class="parent"><a href="javascript:void(0)" id="mapmenu"><img src="images/map.png" /></a>
                     <ul class="submenu" style="display:none;">
-					 <li id="uramenu"> <a href="uramp.html" >URA MP2014</a> </li>
+					      <li id="uramenu"> <a href="uramp.html" >URA MP2014</a> </li>
+						  <li id="uralanding"> <a href="uramp.html" >URA Landed Housing Area</a> </li>
+						  <li id="urabuilding"> <a href="uramp.html" >URA Building Height</a> </li>
+						  
                         <li> <a href="javascript:void(0)" onclick="showgooglemap()">Google Map</a> </li>
                         <li> <a href="javascript:void(0)" onclick="showonemap()">One Map</a> </li>
                         <li> <a href="javascript:void(0)" onclick="showlot()"> Land Lot</a> </li>
@@ -271,7 +271,6 @@ var b = OneMap.map.getLayer(a);
 OneMap.map.removeLayer(b);
 
 
-alert('bbbb');
 
 
  }
@@ -283,7 +282,7 @@ $('#mapDiv').css('display','none');
 $('#gMain').css('display','block');
 initialize(x,y);
 
-alert('ram11');
+
 
         }
 </script>
@@ -303,7 +302,7 @@ function getcurrentpos()
 }
 function showPosition(position) {
 
-alert('ram22');
+
 		var inputSR, outputSR;
 		console.dir(position);
 		var y = position.coords.latitude;
@@ -321,16 +320,40 @@ alert('ram22');
 }
  function showVals(outXY) {
  
- alert('ram33');
- var mystring = outXY;
-var splits = mystring.split(",");
+    alert('ram33');
+	var mystring = outXY;
+	var splits = mystring.split(",");
 
-var x = parseFloat(splits[0]);
-var y = parseFloat(splits[1]);
-//alert(x+','+y);
-console.log(x+','+y);
+	var x = parseFloat(splits[0]);
+	var y = parseFloat(splits[1]);
+	//alert(x+','+y);
+	console.log(x+','+y);
 
-OneMap.showLocation(x,y);
+	OneMap.showLocation(x,y);
+	
+	
+	
+	
+	var srchstring='<a href="uramp.html?x='+x+'&y='+y+'&txt=Delhi">URA MP2014</a>';
+ 
+    var srchstringurland='<a href="uramp.html?service=lha&x='+x+'&y='+y+'&txt=Delhi">URA Landed Housing Area</a>';
+ 
+    var srchstringbuilding='<a href="uramp.html?service=bh&x='+x+'&y='+y+'&txt=Delhi">URA Building Height</a>';
+
+ 
+    jQuery('#uramenu').html(srchstring);
+ 
+ 
+ 
+ jQuery('#uralanding').html(srchstringurland);
+ 
+ jQuery('#urabuilding').html(srchstringbuilding);
+	
+
+	alert(srchstring);
+
+
+    
         }
 </script>
 <script>
