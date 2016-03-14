@@ -21,6 +21,66 @@
 		<script type="text/javascript" src="js/main.js"> </script>
 		<script type="text/javascript" src="js/masterplan.js"> </script>		
 		
+		<script type="text/javascript">
+		var userAgent = navigator.userAgent; //added by lavanya satuluri 25 sept 2014
+		//window.alert(navigator.userAgent);
+		
+		//if (navigator.userAgent.match(/iPhone/i) != null || navigator.userAgent.match(/iPod/i) != null || navigator.userAgent.match(/Android/i) != null || navigator.userAgent.match(/IEMobile/i) != null){ //updated by lavanya satuluri ipad 23 sept 2014
+		if ( navigator.userAgent.match(/iPod/i) != null || navigator.userAgent.match(/IEMobile/i) != null){ //updated by lavanya satuluri iphone 8 oct 2014
+		  /*var js = document.createElement('script');
+		  js.type = "text/javascript";
+		  js.src = "src/css/custom/main_mobile.css";
+		*/
+		  var css = document.createElement('link');
+		  css.type = "text/css";
+		  css.rel = "stylesheet";
+		  css.href = "src/css/custom/main_mobile.css"; //commented by lavanya satuluri 8 oct 2014
+
+		  var h = document.getElementsByTagName('head')[0];
+		  //h.appendChild(js);
+		  h.appendChild(css);
+		  IsMobile = true;  
+		}
+		else if(navigator.userAgent.match(/Android/i) != null)
+		{
+			  var css = document.createElement('link');
+		  css.type = "text/css";
+		  css.rel = "stylesheet";
+		  css.href = "src/css/custom/main_mobile_android.css"; //commented by lavanya satuluri 8 oct 2014
+
+		  var h = document.getElementsByTagName('head')[0];
+		  //h.appendChild(js);
+		  h.appendChild(css);
+		  IsMobile = true;
+		}
+		//added by lavanya satuluri 9th october 2014
+		else if (navigator.userAgent.match(/iPhone/i) != null){
+		if ((screen.availHeight < 1024 && screen.availWidth < 768) || (screen.availWidth < 1024 && screen.availHeight < 768)){
+		  var css = document.createElement('link');
+		  css.type = "text/css";
+		  css.rel = "stylesheet";
+		  css.href = "src/css/custom/main_mobile.css"; 
+		  var h = document.getElementsByTagName('head')[0];
+		  h.appendChild(css);
+		  IsMobile = true;
+		  }
+		}
+		//end by lavanya satuluri 9th october 2014
+		
+		else {
+		  var css = document.createElement('link');
+		  css.type = "text/css";
+		  css.rel = "stylesheet";
+		  css.href = "src/css/custom/main.css";
+
+		  var h = document.getElementsByTagName('head')[0];
+		  //h.appendChild(js);
+		  h.appendChild(css);
+		  IsMobile = false;
+		}
+		</script>
+		
+		
 		<script type="text/javascript" language="Javascript">	
 			dojo.require("esri.map");
 			dojo.require("dijit.dijit"); // optimize: load dijit layer

@@ -43,6 +43,10 @@ marker.setMap(map);
 var srchstring='<a href="uramp.html?x='+x+'&y='+y+'&txt=DELHI ROAD">URA MP2014</a>';
 jQuery('#uramenu').html(srchstring);
 
+alert(srchstring);
+
+
+
 } 
  var OneMap = new GetOneMap('mapDiv','SM');  
 
@@ -161,6 +165,9 @@ function()
 }
 );
 document.addEventListener("DOMContentLoaded", function(event) {
+
+
+
 
 	if (window.DeviceOrientationEvent) {
   document.getElementById("notice").innerHTML = "Gaaf! De DeviceOrientationEvent API word door dit toestel ondersteund.";
