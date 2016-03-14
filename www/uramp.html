@@ -7,7 +7,7 @@
         <!-- <script src="http://js.arcgis.com/3.8/"></script>   -->
 		
 		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+       <link rel="stylesheet" type="text/css" href="css/styles.css" />
         <script src="https://js.arcgis.com/3.8/"></script>  
 		
        <script src="js/jquery.min.js"></script>
@@ -31,16 +31,17 @@
 		  js.type = "text/javascript";
 		  js.src = "src/css/custom/main_mobile.css";
 		*/
-		  var css = document.createElement('link');
+		   var css = document.createElement('link');
 		  css.type = "text/css";
 		  css.rel = "stylesheet";
-		  css.href = "src/css/custom/main_mobile.css"; //commented by lavanya satuluri 8 oct 2014
+		  css.href = "src/css/custom/main.css";
 
 		  var h = document.getElementsByTagName('head')[0];
 		  //h.appendChild(js);
 		  h.appendChild(css);
-		  IsMobile = true;  
-		   alert('ram');
+		  IsMobile = false;
+		  
+		   
 		}
 		else if(navigator.userAgent.match(/Android/i) != null)
 		{
@@ -54,7 +55,7 @@
 		  h.appendChild(css);
 		  IsMobile = false;
 		  
-		   alert('ram1');
+		   
 		}
 		//added by lavanya satuluri 9th october 2014
 		else if (navigator.userAgent.match(/iPhone/i) != null){
@@ -66,9 +67,9 @@
 		  var h = document.getElementsByTagName('head')[0];
 		  h.appendChild(css);
 		  IsMobile = true;
-		   alert('ram2');
+		  
 		  }
-		   alert('ram20');
+		   
 		}
 		//end by lavanya satuluri 9th october 2014
 		
@@ -121,7 +122,7 @@
 		function ResetIframeScroll(height){	
 			var iframeHeight = height+50;
 			$("#infoFrame").height(iframeHeight);
-			alert(iframeHeight);
+			
 			$("#dialogDetails").slideDown(function(){
 			$("#dialogDetails").getNiceScroll().resize();
 			});
@@ -177,11 +178,24 @@
 				</div>
 
        </div>	
-       
-       <div class="compass" style="top: 0;">
-		<div class="arrow" id="compassDiscImg"></div>
-		<div class="disc" ></div>
-	   </div>	
+	   
+	   
+	   <div id="mycom" >
+              <div id="notice" style="display:none"></div>
+
+			<div class="compass" style="top:0;">
+				<div class="arrow" id="compassDiscImg"></div>
+				<div class="disc" ></div>
+			</div>
+
+			<div class="orientation-data" style="display:none">
+				<div>Kantelen voor-achter: <span id="tiltFB"></span></div>
+				<div>Kantelen links-rechts: <span id="tiltLR"></span></div>
+				<div>Richting: <span id="direction"></span></div>
+			</div>
+	</div>
+	
+      	
 	
 		<div class="rht-menu" style="display:block;" id="btmenu">
    		<div class="inner-rht-menu menu-5">
@@ -191,7 +205,10 @@
                 <li> <a href="javascript:void(0)" onclick="removealllayer()"><img src="images/clear.png" /></a> </li>
                 <li class="parent"><a href="javascript:void(0)" id="mapmenu"><img src="images/map.png" /></a>
                     <ul class="submenu" style="display:none;">
-					    <li> <a href="uramp.html" >URA MP2014</a> </li>
+					     <li id="uramenu"> <a href="uramp.html" >URA MP2014</a> </li>
+						 <li id="uralanding"> <a href="uramp.html" >URA Landed Housing Area</a> </li>
+						 <li id="urabuilding"> <a href="uramp.html" >URA Building Height</a> </li>
+						   
                         <li id="gmap"> <a href="search.html" onclick="showgooglemap()">Google Map</a> </li>
                         <li id="onmap"> <a href="search.html" onclick="showonemap()">One Map</a> </li>
                         <li> <a href="javascript:void(0)" onclick="showlot()"> Land Lot</a> </li>
@@ -307,13 +324,35 @@ input {
 		var QueryString = getRequests();	
 		
 		
+		var srchstring='<a href="uramp.html?x='+QueryString["x"]+'&y='+QueryString["y"]+'&txt='+QueryString["txt"]+'">URA MP2014</a>';
+ 
+		 var srchstringurland='<a href="uramp.html?service=lha&x='+QueryString["x"]+'&y='+QueryString["y"]+'&txt='+QueryString["txt"]+'">URA Landed Housing Area</a>';
+		 
+		 var srchstringbuilding='<a href="uramp.html?service=bh&x='+QueryString["x"]+'&y='+QueryString["y"]+'&txt='+QueryString["txt"]+'">URA Building Height</a>';
+
+		 
+		 jQuery('#uramenu').html(srchstring);
+		 
+		 
+		 
+		 jQuery('#uralanding').html(srchstringurland);
+		 
+		 jQuery('#urabuilding').html(srchstringbuilding);
+		 
+		 
 		
-		zoomSearchAddressTo(QueryString["x"],QueryString["y"],QueryString["txt"]);
+		
+		  zoomSearchAddressTo(QueryString["x"],QueryString["y"],QueryString["txt"]);
+		
+		
+		
      
       }
 	  
 	  
 document.addEventListener("DOMContentLoaded", function(event) {
+
+
 
 	if (window.DeviceOrientationEvent) {
   document.getElementById("notice").innerHTML = "Gaaf! De DeviceOrientationEvent API word door dit toestel ondersteund.";

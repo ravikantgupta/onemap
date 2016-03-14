@@ -22,6 +22,8 @@ var getMarkerUniqueId= function(lat, lng) {
 }
   function initialize(x,y) {
   
+  alert('ram');
+  
  window.localStorage.setItem('x-marker',x);
 window.localStorage.setItem('y-marker',y);
   var mapProp = {
@@ -35,15 +37,15 @@ window.localStorage.setItem('y-marker',y);
   icon:'images/Red_glow.gif',
   optimized: false
   });
-var markerId = getMarkerUniqueId(x, y); 
-markers[markerId] = marker;
-marker.setMap(map);
+	var markerId = getMarkerUniqueId(x, y); 
+	markers[markerId] = marker;
+	marker.setMap(map);
 
 
-var srchstring='<a href="uramp.html?x='+x+'&y='+y+'&txt=DELHI ROAD">URA MP2014</a>';
-jQuery('#uramenu').html(srchstring);
+	var srchstring='<a href="uramp.html?x='+x+'&y='+y+'&txt=DELHI ROAD">URA MP2014</a>';
+	jQuery('#uramenu').html(srchstring);
 
-alert(srchstring);
+	alert(srchstring);
 
 
 
