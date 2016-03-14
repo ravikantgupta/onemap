@@ -289,21 +289,7 @@ input {
 		
 		function removealllayer()
 		{
-		var x = window.localStorage.getItem('x-marker');
-		var y = window.localStorage.getItem('y-marker');
-		if(x!==null)
-		{
-		var markerId = getMarkerUniqueId(x,y); 
-		var marker = markers[markerId];
-		marker.setMap(null); 
-		delete markers[markerId];
-		window.localStorage.removeItem('x-marker');
-		window.localStorage.removeItem('y');
-		}
-		var a = OneMap.map.graphicsLayerIds[0];
-		//console.log(a);
-		var b = OneMap.map.getLayer(a);
-		OneMap.map.removeLayer(b);
+	    	jQuery('#map-canvas_graphics_layer').hide();
 		}
 		
 	
