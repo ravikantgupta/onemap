@@ -283,7 +283,7 @@ $('#mapDiv').css('display','none');
 $('#gMain').css('display','block');
 initialize(x,y);
 
-
+alert('ram11');
 
         }
 </script>
@@ -302,6 +302,8 @@ function getcurrentpos()
 
 }
 function showPosition(position) {
+
+alert('ram22');
 		var inputSR, outputSR;
 		console.dir(position);
 		var y = position.coords.latitude;
@@ -318,6 +320,8 @@ function showPosition(position) {
 		
 }
  function showVals(outXY) {
+ 
+ alert('ram33');
  var mystring = outXY;
 var splits = mystring.split(",");
 
