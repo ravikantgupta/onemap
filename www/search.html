@@ -133,7 +133,7 @@ window.localStorage.setItem('y-cordinate',yVal);
 
 </style> 
 </head>
-<body >
+<body onload="setzoom()">
 <div id="srchcont" class="container newcont">
 <div class="flip-dv"><div id="flip">
 	<img src="images/sg-logo.png"/>
@@ -205,7 +205,7 @@ window.localStorage.setItem('y-cordinate',yVal);
                     <ul class="submenu" style="display:none;">
 					      <li id="uramenu"> <a href="uramp.html" >URA MP2014</a> </li>
 						  <li id="uralanding"> <a href="uramp.html" >URA Landed Housing Area</a> </li>
-						   <li id="urabuilding"> <a href="uramp.html" >URA Building Height</a> </li>
+						  <li id="urabuilding"> <a href="uramp.html" >URA Building Height</a> </li>
                           <li> <a href="javascript:void(0)" onclick="showgooglemap()">Google Map</a> </li>
                         <li> <a href="javascript:void(0)" onclick="showonemap()">One Map</a> </li>
                         <li> <a href="javascript:void(0)" onclick="showlot()"> Land Lot</a> </li>
@@ -445,6 +445,69 @@ function srchrslt(x,y,txt){
 
 }
 
+	  function getRequests() {
+			var s1 = location.search.substring(1, location.search.length).split('&'),
+				r = {}, s2, i;
+			for (i = 0; i < s1.length; i += 1) {
+				s2 = s1[i].split('=');
+				r[decodeURIComponent(s2[0]).toLowerCase()] = decodeURIComponent(s2[1]);
+			}
+			return r;
+		};
+function setzoom()
+		{
+		
+		var QueryString = getRequests();	
+		
+		if(QueryString["action"]!='')
+		{
+		  var srchstring='<a href="uramp.html?x='+QueryString["x"]+'&y='+QueryString["y"]+'&txt='+QueryString["txt"]+'">URA MP2014</a>';
+ 
+		 var srchstringurland='<a href="uramp.html?service=lha&x='+QueryString["x"]+'&y='+QueryString["y"]+'&txt='+QueryString["txt"]+'">URA Landed Housing Area</a>';
+		 
+		 var srchstringbuilding='<a href="uramp.html?service=bh&x='+QueryString["x"]+'&y='+QueryString["y"]+'&txt='+QueryString["txt"]+'">URA Building Height</a>';
+
+		 
+				 
+		 
+		 jQuery('#uramenu').html(srchstring);
+		 	 
+		 jQuery('#uralanding').html(srchstringurland);
+		 
+		 jQuery('#urabuilding').html(srchstringbuilding);
+		 
+		
+		 
+		 
+		    if(QueryString["action"]=='onmap')
+			{
+			
+		
+			  ZoomTo(parseFloat(QueryString["x"]),parseFloat(QueryString["y"]));
+			
+			}
+			
+			  if(QueryString["action"]=='gmap')
+			  {
+			   ZoomTo(parseFloat(QueryString["x"]),parseFloat(QueryString["y"]));
+		        $('.submenu').hide();
+				var x = QueryString["x"];
+				var y =QueryString["y"];
+				var inXYList = x+','+y;
+				//console.log(txt);
+				inputSR = 3414;
+				outputSR = 4326;
+				var CoordConvertorObj = new CoordConvertor();
+				CoordConvertorObj.ConvertCoordinate(inXYList, inputSR, outputSR, showVals);
+			 }	
+		
+		
+		  
+		}
+		
+		
+     
+      }
 
 </script>
 </body>

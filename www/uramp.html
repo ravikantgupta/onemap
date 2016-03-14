@@ -207,7 +207,8 @@
                     <ul class="submenu" style="display:none;">
 					     <li id="uramenu"> <a href="uramp.html" >URA MP2014</a> </li>
 						 <li id="uralanding"> <a href="uramp.html" >URA Landed Housing Area</a> </li>
-						 <li id="urabuilding"> <a href="uramp.html" >URA Building Height</a> </li>
+						 
+                         <li id="urabuilding"> <a href="uramp.html" >URA Building Height</a> </li>
 						   
                         <li id="gmap"> <a href="search.html" onclick="showgooglemap()">Google Map</a> </li>
                         <li id="onmap"> <a href="search.html" onclick="showonemap()">One Map</a> </li>
@@ -331,13 +332,26 @@ input {
 		 var srchstringbuilding='<a href="uramp.html?service=bh&x='+QueryString["x"]+'&y='+QueryString["y"]+'&txt='+QueryString["txt"]+'">URA Building Height</a>';
 
 		 
+		var srchsmap='<a href="search.html?action=onmap&x='+QueryString["x"]+'&y='+QueryString["y"]+'&txt='+QueryString["txt"]+'">One Map</a>';
+
+		
+		var srchgmap='<a href="search.html?action=gmap&x='+QueryString["x"]+'&y='+QueryString["y"]+'&txt='+QueryString["txt"]+'">Google Map</a>';
+
+		
+		 
+		 
 		 jQuery('#uramenu').html(srchstring);
-		 
-		 
-		 
+		 	 
 		 jQuery('#uralanding').html(srchstringurland);
 		 
 		 jQuery('#urabuilding').html(srchstringbuilding);
+		 
+		 jQuery('#onmap').html(srchsmap);
+		 
+		 jQuery('#gmap').html(srchgmap);
+		 
+		 
+		  
 		 
 		 
 		
@@ -388,6 +402,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
       compassDisc.style.webkitTransform = "rotate("+ dir +"deg)";
       compassDisc.style.MozTransform = "rotate("+ dir +"deg)";
       compassDisc.style.transform = "rotate("+ dir +"deg)";
+	  
+	  
+	 
     }
 
 });
