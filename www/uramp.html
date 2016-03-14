@@ -44,15 +44,15 @@
 		}
 		else if(navigator.userAgent.match(/Android/i) != null)
 		{
-			  var css = document.createElement('link');
+			 var css = document.createElement('link');
 		  css.type = "text/css";
 		  css.rel = "stylesheet";
-		  css.href = "src/css/custom/main_mobile_android.css"; //commented by lavanya satuluri 8 oct 2014
+		  css.href = "src/css/custom/main.css";
 
 		  var h = document.getElementsByTagName('head')[0];
 		  //h.appendChild(js);
 		  h.appendChild(css);
-		  IsMobile = true;
+		  IsMobile = false;
 		  
 		   alert('ram1');
 		}
@@ -82,7 +82,7 @@
 		  //h.appendChild(js);
 		  h.appendChild(css);
 		  IsMobile = false;
-		   alert('ram3');
+		  
 		}
 		</script>
 		
