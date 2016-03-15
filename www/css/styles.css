@@ -349,13 +349,13 @@ ul.wtf-menu li:nth-last-child(3) a:hover{moz-border-radius:25px 0 0 25px; -webki
 .wtf-menu ul.submenu li a:hover{border-radius:0 !important; background:#f0f0f0; color:#000;}
 .wtf-menu ul.submenu li a{color:#666;}
 .wtf-menu ul.submenu {
-    width: 130px;
+    width: 200px;
     padding: 0px 0px;
     margin: 0px;
     background: #fff;
     position: absolute;
     bottom: 67px;
-    left: -80px;
+    left: -141px;
     display: none;
     -webkit-box-shadow: 0 -1px 2px 0 rgba(0,0,0,.3);
     box-shadow: 0 -1px 2px 0 rgba(0,0,0,.3);
@@ -627,7 +627,7 @@ ul.wtf-menu li:nth-last-child(3) a {
 }
 .wtf-menu ul.submenu li a{padding:4px 10px;}
 .search-icn{font-size:17px;}
-
+.wtf-menu ul.submenu{width: 187px; bottom: 52px;}
 }
 
 @media (max-width:414px){
