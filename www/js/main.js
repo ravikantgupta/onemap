@@ -1402,29 +1402,39 @@
 							  var marker = new esri.Graphic(wcbpoint,symbol);
 							  map.graphics.add(marker); 
 							  //addInfowindow(wcbpoint,'Address',result);
-							  map.setZoom(17);
+							  
+							    map.setZoom(6);
+							  
 							  map.centerAt(wcbpoint);
+							   map._params.maxZoom = 7;
 							 // map.centerAndZoom(wcbpoint,17);
-							  map._params.maxZoom = 18;
+							 
 							 
 							  });
 		                }
 						else{
 						//end  by lavanya satuluri 18-sept-2014 to watercolor bm - search zoom 
-						 addMarker(point,1);
-						// addInfowindow(point,'Address',result);
-						 map.setZoom(17);
-						 map.centerAt(point);
-						  map._params.maxZoom = 18;
+												
+						   addMarker(point,1);
+						  // addInfowindow(point,'Address',result);
+						    map.setZoom(100);
+							
+											 						  
+						    map.centerAt(point);
+						 map._params.maxZoom = 100;
+						
+						
+						   map.setZoom(5);
+						    map.centerAt(point);
 						 }  //added by lavanya satuluri 18-sept-2014 to watercolor bm - search zoom 
 						
 					},
 					error: function (error){
 						 addMarker(point,1);
 						 addInfowindow(point,'Address',address);
-						 map.setZoom(17);
+						 map.setZoom(6);
 						 map.centerAt(point);
-						  map._params.maxZoom = 18;
+						  map._params.maxZoom = 7;
 					}
 				});
 		}
