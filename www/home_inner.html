@@ -10,16 +10,13 @@
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
-<script src="js/jquery.min.js"></script>
-<script src="http://maps.googleapis.com/maps/api/js"></script> 	
-<script src="scripts/jquery-2.1.3.min.js"></script>   
-<script src="js/jquery.flip.min.js"></script>
-  <!--<script type='text/JavaScript' src='js/map-api.js'></script>-->
-  
-   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
-   <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
-					
-		
+		<script src="js/jquery.min.js"></script>
+		<script src="http://maps.googleapis.com/maps/api/js"></script> 	
+		<script src="scripts/jquery-2.1.3.min.js"></script>   
+		<script src="js/jquery.flip.min.js"></script>
+      <script type='text/JavaScript' src='js/map-api.js'></script>
+       
+				
 <script>
 var markers = {};
 var getMarkerUniqueId= function(lat, lng) {
@@ -52,9 +49,11 @@ window.localStorage.setItem('y-marker',y);
 
 
 } 
- //var OneMap = new GetOneMap('mapDiv','SM');  
+  var OneMap = new GetOneMap('mapDiv','SM'); 
 
+    
 </script>
+
 <script>
 
   function sethomeption()
@@ -119,13 +118,14 @@ window.localStorage.setItem('y-marker',y);
 		<div>Kantelen links-rechts: <span id="tiltLR"></span></div>
 		<div>Richting: <span id="direction"></span></div>
 	</div>
-<div id="mapdiv" style='height:100%;'></div>
+<div id="mapDiv" style='height:100%;'></div>
+
  <div id="gMain" style="height:500px;width:500px;display:none;"></div>
-	<div  id="cnti-box-tp" style="display:none;">
+	<div  id="cnti-box-tp">
         <div class="inn-cnti">
         <p><i class="fa fa-cloud"></i><br />
         Map</p>
-        <input type="range" id="slider"  value="0.0" min="0.0" max="30.0" step="0.1" />
+        <input type="range" id="slider"  value="30" min="0.0" max="30.0" step="0.1" />
         <p><i class="fa fa-map-marker"></i><br />
         Lot</p>
        </div>
@@ -295,6 +295,8 @@ initialize(x,y);
 <script>
 $( document ).ready(function() {
    $('#mybtn').click();
+   
+   setTimeout(function(){ ltview(); }, 2000);
 });
 function getcurrentpos()
 {
@@ -313,8 +315,11 @@ function showPosition(position) {
 		console.dir(position);
 		var y = position.coords.latitude;
 		var x = position.coords.longitude;
+		
+		var QueryString = getRequests();	
+				
 		var inXYList = x+','+y;
-
+      
 		inputSR = 4326;
 
 
@@ -395,70 +400,88 @@ $(document).on('input change', '#slider', function() {
 var a = $(this).val();
 if(a<1)
 {
-		if(tiled!=""&&count!=1)
+		
+		 window.location='home.html';
+		/*if(tiled!=""&&count!=1)
 		{
 		 
 		OneMap.map.addLayer(new OM.CustomTileServiceLayer()); 
 
 		  
-		}
+		}*/
 }
 
 if(a>29)
 {
 
-            window.location='home_inner.html';
-			
-			/* require(["esri/map", "esri/layers/ArcGISTiledMapServiceLayer", "dojo/domReady!"],
-					function(Map, ArcGISTiledMapServiceLayer) {
-			var _baseMapHost = "http://www.onemap.sg/ArcGIS/rest/services/";
-			var tileHost1 = "http://t1.onemap.sg/ArcGIS/rest/services/"
-			var tileHost2 = "http://t2.onemap.sg/ArcGIS/rest/services/";
-			var _baseMapURL;
-			var _baseMapURL1;
-			var _baseMapURL2;
-					_baseMapURL = _baseMapHost + "LOT_VIEW" + "/MapServer";
-					_baseMapURL1 = tileHost1 + "LOT_VIEW" + "/MapServer";
-					_baseMapURL2 = tileHost2 + "LOT_VIEW" + "/MapServer";
-			   var request = new XMLHttpRequest();
-			   
-					  tiled = new ArcGISTiledMapServiceLayer(_baseMapURL, { tileServers: [_baseMapURL1, _baseMapURL2] });
-					  OneMap.map.addLayer(tiled);
-					  console.log(OneMap.map.layerIds);
-					  
-					}
-				  );*/
+
+ require(["esri/map", "esri/layers/ArcGISTiledMapServiceLayer", "dojo/domReady!"],
+        function(Map, ArcGISTiledMapServiceLayer) {
+var _baseMapHost = "http://www.onemap.sg/ArcGIS/rest/services/";
+var tileHost1 = "http://t1.onemap.sg/ArcGIS/rest/services/"
+var tileHost2 = "http://t2.onemap.sg/ArcGIS/rest/services/";
+var _baseMapURL;
+var _baseMapURL1;
+var _baseMapURL2;
+        _baseMapURL = _baseMapHost + "LOT_VIEW" + "/MapServer";
+        _baseMapURL1 = tileHost1 + "LOT_VIEW" + "/MapServer";
+        _baseMapURL2 = tileHost2 + "LOT_VIEW" + "/MapServer";
+   var request = new XMLHttpRequest();
+   
+          tiled = new ArcGISTiledMapServiceLayer(_baseMapURL, { tileServers: [_baseMapURL1, _baseMapURL2] });
+          OneMap.map.addLayer(tiled);
+		  console.log(OneMap.map.layerIds);
+		  
+        }
+      );
 	  count = count+1;
 }
 
+
+console.log(a);
 });
+
+function ltview(){
+
+
+
+   require(["esri/map", "esri/layers/ArcGISTiledMapServiceLayer", "dojo/domReady!"],
+        function(Map, ArcGISTiledMapServiceLayer) {
+var _baseMapHost = "http://www.onemap.sg/ArcGIS/rest/services/";
+var tileHost1 = "http://t1.onemap.sg/ArcGIS/rest/services/"
+var tileHost2 = "http://t2.onemap.sg/ArcGIS/rest/services/";
+var _baseMapURL;
+var _baseMapURL1;
+var _baseMapURL2;
+        _baseMapURL = _baseMapHost + "LOT_VIEW" + "/MapServer";
+        _baseMapURL1 = tileHost1 + "LOT_VIEW" + "/MapServer";
+        _baseMapURL2 = tileHost2 + "LOT_VIEW" + "/MapServer";
+   var request = new XMLHttpRequest();
+   
+          tiled = new ArcGISTiledMapServiceLayer(_baseMapURL, { tileServers: [_baseMapURL1, _baseMapURL2] });
+          OneMap.map.addLayer(tiled);
+		  console.log(OneMap.map.layerIds);
+		  
+        }
+      );
+
+
+}
 </script>
- 
- <script>
-					var center = L.bounds([1.56073, 104.11475], [1.16, 103.502]).getCenter();
-					var map = L.map('mapdiv').setView([center.x, center.y], 12);
+<script>
 
-					var basemap = L.tileLayer('http://{s}-tiles.sgmap.xyz/v2/Vibrant_City/{z}/{x}/{y}.png', {
-						//attribution: 'Map data © contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>',
-						maxZoom: 18,
-					});
-					basemap.addTo(map);
-					
-					function getLocation() {
-						if (navigator.geolocation) {
-							navigator.geolocation.getCurrentPosition(showPosition);
-						} 
-					}
+  function getRequests() {
+			var s1 = location.search.substring(1, location.search.length).split('&'),
+				r = {}, s2, i;
+			for (i = 0; i < s1.length; i += 1) {
+				s2 = s1[i].split('=');
+				r[decodeURIComponent(s2[0]).toLowerCase()] = decodeURIComponent(s2[1]);
+			}
+			return r;
+		}
 
-					function showPosition(position) {						
-						 marker = new L.Marker([position.coords.latitude, position.coords.longitude], {bounceOnAdd: false}).addTo(map);						 
-							var popup = L.popup()
-						   .setLatLng([position.coords.latitude, position.coords.longitude]) 
-						   .setContent('You are here!')
-						   .openOn(map);					
-					}
+</script>
 
-				</script>
-
+	
 </body>
 </html>
