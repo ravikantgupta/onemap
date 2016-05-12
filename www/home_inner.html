@@ -146,7 +146,7 @@ window.localStorage.setItem('y-marker',y);
 		<div>Kantelen links-rechts: <span id="tiltLR"></span></div>
 		<div>Richting: <span id="direction"></span></div>
 	</div>
-<div id="mapDiv" style='height:100%;'></div>
+<div id="mapDiv" style='height:100%;display:none;'></div>
 
  <div id="gMain" style="height:500px;width:500px;display:none;"></div>
 	<div  id="cnti-box-tp">
@@ -314,9 +314,7 @@ var x = position.coords.latitude;
 var y = position.coords.longitude;
 $('#mapDiv').css('display','none');
 $('#gMain').css('display','block');
-
-
-initialize(x,y);
+ initialize(x,y);
 
 
 
