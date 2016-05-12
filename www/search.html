@@ -397,8 +397,10 @@ OneMap.map.addLayer(new OM.CustomTileServiceLayer());
 
 if(a==30)
 {
- require(["esri/map", "esri/layers/ArcGISTiledMapServiceLayer", "dojo/domReady!"],
-        function(Map, ArcGISTiledMapServiceLayer) {
+ require(["esri/map", "esri/layers/ArcGISTiledMapServiceLayer", "esri/layers/FeatureLayer","esri/symbols/SimpleFillSymbol",
+      "esri/symbols/SimpleLineSymbol",
+      "esri/tasks/GeometryService","esri/dijit/PopupTemplate","dojo/domReady!"],
+        function(Map, ArcGISTiledMapServiceLayer,FeatureLayer,SimpleFillSymbol, SimpleLineSymbol, GeometryService,PopupTemplate) {
 var _baseMapHost = "http://www.onemap.sg/ArcGIS/rest/services/";
 var tileHost1 = "http://t1.onemap.sg/ArcGIS/rest/services/"
 var tileHost2 = "http://t2.onemap.sg/ArcGIS/rest/services/";
@@ -412,7 +414,26 @@ var _baseMapURL2;
    
           tiled = new ArcGISTiledMapServiceLayer(_baseMapURL, { tileServers: [_baseMapURL1, _baseMapURL2] });
           OneMap.map.addLayer(tiled);
-		  //console.log(OneMap.map.layerIds);
+		 
+		    
+			   
+			   
+						var template = new PopupTemplate({
+							title: "Land Lot Information {FIPS}",
+
+							fieldInfos: ["*"],
+							mediaInfos: ["*"],
+						  });
+			
+			   var featureLayer = new FeatureLayer("https://services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/Beverly%20Hills%20Trees%20By%20Block/FeatureServer/0", {
+       							infoTemplate: template,
+							outFields: ["*"]
+						  });
+
+                         
+						  OneMap.map.addLayer(featureLayer);
+		 
+		 
 		  
         }
       );
