@@ -128,6 +128,30 @@ window.localStorage.setItem('y-cordinate',yVal);
     OneMap.showLocation(xVal,yVal);
 }
 
+
+function showsrch()
+	{
+           $('.front').css('transform', 'rotateY(0deg)');
+		   $('.back').css('transform','rotateY(180deg)');
+		   
+		   $('#divResults').html(''); 
+		  
+		   $('#txtSearchText').val(''); 
+		  
+		  
+       
+	}
+	
+function historyback()
+{
+
+         $('.front').css('transform', 'rotateY(180deg)');
+		   $('.back').css('transform','rotateY(0deg)');
+		   
+		   jQuery('#flip').click();
+  
+}	
+
 </script>  
  <style> 
 
@@ -144,7 +168,7 @@ window.localStorage.setItem('y-cordinate',yVal);
 <a href="home.html"><i class="fa fa-home"></i> Home</a>
 </li>
 <li>
-<a href="search.html"><i class="fa fa-search"></i> Search</a>
+<a href="javascript:void(0);" onclick="showsrch()"><i class="fa fa-search"></i> Search</a>
 </li>
 <li>
 <a href="javascript:void(0);" onclick="showhide()"><i class="fa fa-map-marker"></i> Lot View</a>
@@ -157,7 +181,7 @@ window.localStorage.setItem('y-cordinate',yVal);
 <div id="content" class="search-page">
 <div id="card"> 
   <div class="front"> 
-  <div onclick="javascript:history.go(-1)" id="menu"><p>Menu</p></div>
+  <div onclick="historyback()" id="menu"><p>Menu</p></div>
   <form onsubmit="return GetSearchData()">
   <input type="search" id="txtSearchText" name="Search" />
   <i class="fa fa-search search-icn"></i>
@@ -438,6 +462,9 @@ var _baseMapURL2;
         }
       );
 	  count = count+1;
+	  
+	  
+	 
 }
 
 });

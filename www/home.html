@@ -10,11 +10,11 @@
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
-<script src="js/jquery.min.js"></script>
-<script src="http://maps.googleapis.com/maps/api/js"></script> 	
-<script src="scripts/jquery-2.1.3.min.js"></script>   
-<script src="js/jquery.flip.min.js"></script>
-  <!--<script type='text/JavaScript' src='js/map-api.js'></script>-->
+	<script src="js/jquery.min.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js"></script> 	
+	<script src="scripts/jquery-2.1.3.min.js"></script>   
+	<script src="js/jquery.flip.min.js"></script>
+	  <script type='text/JavaScript' src='js/map-api.js'></script>
   
    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
    <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
@@ -81,11 +81,132 @@ window.localStorage.setItem('y-marker',y);
   return false;
 }
 
+
+function showsrch()
+	{
+           $('#homesearch').css('transform', 'rotateY(0deg)');
+		   
+		   $('.hm').css('transform','rotateY(180deg)');
+		   
+		  
+		  
+		   
+		  
+		  
+       
+	}
+	
+function historyback()
+{
+
+          $('#homesearch').css('transform', 'rotateY(180deg)');
+		   
+		   $('.hm').css('transform','rotateY(0deg)');
+		  
+		   
+  
+}
+
+function GetSearchData() {
+
+
+	
+        var basicSearch = new BasicSearch;
+        var searchText = document.getElementById("txtSearchText").value
+        basicSearch.searchVal = searchText;
+        basicSearch.returnGeom = '1';     
+        basicSearch.GetSearchResults(displayData);
+		
+		
+		return false;
+    }
+	
+	function displayData(resultData){debugger;
+        var results = resultData.results;
+        if (results=='No results'){
+            document.getElementById('divResults').innerHTML = "No result(s) found";
+            return false;
+        }
+        else{
+		
+		      var htmlStr = "<table>";
+           
+			var rowcat='';
+			
+			 var catarr = [];
+            for (var i = 0; i < results.length; i++) {
+                var row = results[i];
+				if(row.CATEGORY=="")
+				{
+				}
+				else{
+				catarr[i] = row.CATEGORY;
+				
+				}
+			
+            }
+			 catarr = arrUnique(catarr);
+			
+			for (var y = 0; y < catarr.length; y++) {
+			     var cathtml='<tr class="headingcat"><td> '+catarr[y] +'</td></tr>';
+            for (var i = 0; i < results.length; i++) {
+                var row = results[i];
+    
+               
+             if(catarr[y]==row.CATEGORY.trim())
+				 {
+				     htmlStr = htmlStr + cathtml;
+					htmlStr = htmlStr + "<tr>";
+					htmlStr = htmlStr + "<td>";
+					//console.log(row.X +","+ row.Y);
+					
+					var srrs='"'+row.SEARCHVAL+'"';
+					
+					//htmlStr = htmlStr + "<a onclick='srchrslt("+ row.X +","+ row.Y +"," + srrs + ")' href='JavaScript:ZoomTo("+ row.X +","+ row.Y +")'>" + row.SEARCHVAL + "</a>";
+					
+					htmlStr = htmlStr + "<a  href='search.html?x="+ row.X +"&y="+ row.Y +"&val=" + row.SEARCHVAL + "&action=onmap'>" + row.SEARCHVAL + "</a>";
+					
+					
+					htmlStr = htmlStr + "</td>";
+					htmlStr = htmlStr + "</tr>";
+					cathtml='';
+				}
+            }
+			}
+            htmlStr = htmlStr + "</table>";
+			
+            document.getElementById('divResults').innerHTML = htmlStr;
+       
+		    
+            }
+    }
+	
+	 function arrUnique(a){
+  var t = [];
+  for(var x = 0; x < a.length; x++){
+    if(t.indexOf(a[x]) == -1)t.push(a[x]);
+  }
+  return t;
+}
+
 </script>
  
 </head>
 <body onload="sethomeption()">
-<div class="container hm">
+
+<div id="homesearch" style="height: 100%; width: 100%;backface-visibility: hidden; transform-style: preserve-3d;position: absolute; z-index: 1; transition: all 0.5s ease-out 0s;transform: rotateY(180deg);">
+		 <div class="front"> 
+		  <div onclick="historyback()" id="menu"><p>Menu</p></div>
+		  <form onsubmit="return GetSearchData()">
+		  <input type="search" id="txtSearchText" name="Search" />
+		  <i class="fa fa-search search-icn"></i>
+		  </form>
+		
+		   <div id="divResults"></div>
+		  </div> 
+  </div> 
+
+<div class="container hm" style="height: 100%; width: 100%;backface-visibility: hidden; transform-style: preserve-3d;position: absolute; z-index: 1; transition: all 0.5s ease-out 0s;transform: rotateY(0deg);">
 <div class="flip-dv"><div id="flip">
 	<img src="images/sg-logo.png"/>
 <!--<i class="fa fa-bars"></i>--></div></div>
@@ -96,7 +217,7 @@ window.localStorage.setItem('y-marker',y);
 <a href="home.html"><i class="fa fa-home"></i> Home</a>
 </li>
 <li>
-<a href="search.html"><i class="fa fa-search"></i> Search</a>
+<a href="javascript:void(0)" onclick="showsrch()"><i class="fa fa-search"></i> Search</a>
 </li>
 <li>
 <a href="javascript:void(0);" onclick="showhide()"><i class="fa fa-map-marker"></i> Lot View</a>
