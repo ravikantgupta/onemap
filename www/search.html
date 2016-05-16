@@ -317,6 +317,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 function showlot()
 {
+
+if(!jQuery('#divMain_layer2').length)
+{
 $('.submenu').hide();
 $('#divMain').css('display','block');
 $('#gMain').css('display','none');
@@ -356,6 +359,7 @@ var _baseMapURL2;
 		  
         }
       );
+	}  
 
 }
 function showonemap()
@@ -420,13 +424,19 @@ window.location.href="index.html";
 <script>
 function showhide()
 {
+ 
 $('#divMain').css('display','block');
 $('#gMain').css('display','none');
-$('#cnti-box-tp').toggle();
+
 $('.container').toggleClass('rwded');
 //$("#panel").slideUp("slow");
 
-  showlot();
+  if(!jQuery('#divMain_layer2').length)
+  {
+    $('#cnti-box-tp').toggle();
+   showlot();
+   
+  }
   
 } 
 $(document).ready(function(){
