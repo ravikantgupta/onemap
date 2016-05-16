@@ -132,11 +132,21 @@ window.localStorage.setItem('y-cordinate',yVal);
 function showsrch()
 	{
            $('.front').css('transform', 'rotateY(0deg)');
+		   $('.front').css('z-index', '1');
 		   $('.back').css('transform','rotateY(180deg)');
+		   $('.back').css('opacity','0');
+		   
+		    $('.back').css('z-index','0');
 		   
 		   $('#divResults').html(''); 
 		  
 		   $('#txtSearchText').val(''); 
+		   
+		    $('.compass').hide(); 
+		   
+		   
+		   $('#flip').click(); 
+		   
 		  
 		  
        
@@ -147,6 +157,7 @@ function historyback()
 
          $('.front').css('transform', 'rotateY(180deg)');
 		   $('.back').css('transform','rotateY(0deg)');
+		    $('.back').css('opacity','1');
 		   
 		   jQuery('#flip').click();
   
@@ -162,7 +173,7 @@ function historyback()
 <div class="flip-dv"><div id="flip">
 	<img src="images/sg-logo.png"/>
 <!--<i class="fa fa-bars"></i>--></div></div>
-<div id="panel">
+<div id="panel" >
 <ul>
 <li>
 <a href="home.html"><i class="fa fa-home"></i> Home</a>
