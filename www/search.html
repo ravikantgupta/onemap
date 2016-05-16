@@ -366,7 +366,12 @@ var _baseMapURL2;
 	$('.submenu').hide();
 	$('#divMain').css('display','block');
 	$('#gMain').css('display','none');
-	 $('#cnti-box-tp').toggle();
+	  
+  if($('#cnti-box-tp').css('display') == 'none')
+	{
+          $('#cnti-box-tp').show(); 
+	}
+	$('#slider').val(1);
 }
 function showonemap()
 {
@@ -379,7 +384,7 @@ function showonemap()
  
  /*OneMap.map.addLayer(new OM.CustomTileServiceLayer());**/
  
- 
+ $('#slider').val(0);
 }
 function showgooglemap()
 {
@@ -443,12 +448,12 @@ $('#gMain').css('display','none');
 $('.container').toggleClass('rwded');
 //$("#panel").slideUp("slow");
 
-  if(!jQuery('#divMain_layer2').length)
-  {
+  
     $('#cnti-box-tp').toggle();
    showlot();
    
-  }
+ 
+
   
 } 
 $(document).ready(function(){
