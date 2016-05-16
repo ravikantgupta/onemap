@@ -222,7 +222,7 @@ function historyback()
   	<div class="inn-cnti">
     <p><i class="fa fa-cloud"></i><br />
 	Map</p>
- 	<input type="range" id="slider"  value="0.0" min="0.0" max="30.0" step="0.1" />
+ 	<input type="range" id="slider"  value="1.0" min="0.0" max="1.0" step="0.1" />
  	<p><i class="fa fa-map-marker"></i><br />
 	Lot</p>
    </div></div>
@@ -320,8 +320,10 @@ function showlot()
 $('.submenu').hide();
 $('#divMain').css('display','block');
 $('#gMain').css('display','none');
- require(["esri/map", "esri/layers/ArcGISTiledMapServiceLayer", "dojo/domReady!"],
-        function(Map, ArcGISTiledMapServiceLayer) {
+ require(["esri/map", "esri/layers/ArcGISTiledMapServiceLayer", "esri/layers/FeatureLayer","esri/symbols/SimpleFillSymbol",
+      "esri/symbols/SimpleLineSymbol",
+      "esri/tasks/GeometryService","esri/dijit/PopupTemplate", "dojo/domReady!"],
+        function(Map, ArcGISTiledMapServiceLayer,FeatureLayer,SimpleFillSymbol, SimpleLineSymbol, GeometryService,PopupTemplate) {
 var _baseMapHost = "http://www.onemap.sg/ArcGIS/rest/services/";
 var tileHost1 = "http://t1.onemap.sg/ArcGIS/rest/services/"
 var tileHost2 = "http://t2.onemap.sg/ArcGIS/rest/services/";
@@ -335,7 +337,22 @@ var _baseMapURL2;
    
           tiled = new ArcGISTiledMapServiceLayer(_baseMapURL, { tileServers: [_baseMapURL1, _baseMapURL2] });
           OneMap.map.addLayer(tiled);
-		  //console.log(OneMap.map.layerIds);
+		  
+		  	var template = new PopupTemplate({
+							title: "Land Lot Information {FIPS}",
+
+							fieldInfos: ["*"],
+							mediaInfos: ["*"],
+						  });
+			
+			   var featureLayer = new FeatureLayer("https://services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/Beverly%20Hills%20Trees%20By%20Block/FeatureServer/0", {
+       							infoTemplate: template,
+							outFields: ["*"]
+						  });
+
+                         
+						  OneMap.map.addLayer(featureLayer);
+		 
 		  
         }
       );
@@ -408,6 +425,9 @@ $('#gMain').css('display','none');
 $('#cnti-box-tp').toggle();
 $('.container').toggleClass('rwded');
 //$("#panel").slideUp("slow");
+
+  showlot();
+  
 } 
 $(document).ready(function(){
     $("#flip").click(function(){
@@ -421,63 +441,14 @@ var count = 1;
 var tiled;
 $(document).on('input change', '#slider', function() {
 var a = $(this).val();
-if(a==0)
-{
-if(tiled!=""&&count!=1)
-{
 
-OneMap.map.addLayer(new OM.CustomTileServiceLayer());
-  
-}
-}
+    var onmapopacity=a-0.1;
+	var lotopacity=1-onmapopacity;
+ jQuery('#divMain_layer0').css('opacity',lotopacity);
+ jQuery('#divMain_layer2').css('opacity',onmapopacity);
+ 
+ //console.log(a);
 
-if(a==30)
-{
- require(["esri/map", "esri/layers/ArcGISTiledMapServiceLayer", "esri/layers/FeatureLayer","esri/symbols/SimpleFillSymbol",
-      "esri/symbols/SimpleLineSymbol",
-      "esri/tasks/GeometryService","esri/dijit/PopupTemplate","dojo/domReady!"],
-        function(Map, ArcGISTiledMapServiceLayer,FeatureLayer,SimpleFillSymbol, SimpleLineSymbol, GeometryService,PopupTemplate) {
-var _baseMapHost = "http://www.onemap.sg/ArcGIS/rest/services/";
-var tileHost1 = "http://t1.onemap.sg/ArcGIS/rest/services/"
-var tileHost2 = "http://t2.onemap.sg/ArcGIS/rest/services/";
-var _baseMapURL;
-var _baseMapURL1;
-var _baseMapURL2;
-        _baseMapURL = _baseMapHost + "LOT_VIEW" + "/MapServer";
-        _baseMapURL1 = tileHost1 + "LOT_VIEW" + "/MapServer";
-        _baseMapURL2 = tileHost2 + "LOT_VIEW" + "/MapServer";
-   var request = new XMLHttpRequest();
-   
-          tiled = new ArcGISTiledMapServiceLayer(_baseMapURL, { tileServers: [_baseMapURL1, _baseMapURL2] });
-          OneMap.map.addLayer(tiled);
-		 
-		    
-			   
-			   
-						var template = new PopupTemplate({
-							title: "Land Lot Information {FIPS}",
-
-							fieldInfos: ["*"],
-							mediaInfos: ["*"],
-						  });
-			
-			   var featureLayer = new FeatureLayer("https://services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/Beverly%20Hills%20Trees%20By%20Block/FeatureServer/0", {
-       							infoTemplate: template,
-							outFields: ["*"]
-						  });
-
-                         
-						  OneMap.map.addLayer(featureLayer);
-		 
-		 
-		  
-        }
-      );
-	  count = count+1;
-	  
-	  
-	 
-}
 
 });
 
