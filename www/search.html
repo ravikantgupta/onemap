@@ -320,9 +320,7 @@ function showlot()
 
 if(!jQuery('#divMain_layer2').length)
 {
-$('.submenu').hide();
-$('#divMain').css('display','block');
-$('#gMain').css('display','none');
+
  require(["esri/map", "esri/layers/ArcGISTiledMapServiceLayer", "esri/layers/FeatureLayer","esri/symbols/SimpleFillSymbol",
       "esri/symbols/SimpleLineSymbol",
       "esri/tasks/GeometryService","esri/dijit/PopupTemplate", "dojo/domReady!"],
@@ -359,15 +357,29 @@ var _baseMapURL2;
 		  
         }
       );
-	}  
-
+	}else
+{
+   jQuery('#divMain_layer0').css('opacity',0);
+     jQuery('#divMain_layer2').css('opacity',1);
+}	
+	
+	$('.submenu').hide();
+	$('#divMain').css('display','block');
+	$('#gMain').css('display','none');
+	 $('#cnti-box-tp').toggle();
 }
 function showonemap()
 {
-$('.submenu').hide();
-$('#divMain').css('display','block');
-$('#gMain').css('display','none');
- OneMap.map.addLayer(new OM.CustomTileServiceLayer());
+	$('.submenu').hide();
+	$('#divMain').css('display','block');
+	$('#gMain').css('display','none');
+	
+	 jQuery('#divMain_layer0').css('opacity',1);
+     jQuery('#divMain_layer2').css('opacity',0);
+ 
+ /*OneMap.map.addLayer(new OM.CustomTileServiceLayer());*/
+ 
+ 
 }
 function showgooglemap()
 {
