@@ -77,7 +77,7 @@ window.localStorage.setItem('y-marker',y);
 	  if(action=='gmap')
 		 {
 		   showgooglemap1();
-		   
+		      $('#canvas-for-google-map').html('<iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/streetview?location='+lan+','+lat+'&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>');
 		   $('#cnti-box-tp').hide();
 		 
 		 }
@@ -154,7 +154,7 @@ window.localStorage.setItem('y-marker',y);
 		<div>Kantelen links-rechts: <span id="tiltLR"></span></div>
 		<div>Richting: <span id="direction"></span></div>
 	</div>
-<div id="mapDiv1" style='height:100%;overflow:hidden;position:relative;'><div id="canvas-for-google-map" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/streetview?location=1.3217484,103.8447622&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe></div><a class="google-html" rel="nofollow" href="https://www.hostingreviews.website/compare/hostgator-vs-bluehost" id="grab-map-info">hostgator vs bluehost</a><style>#canvas-for-google-map .text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style></div><script src="https://www.hostingreviews.website/google-maps-authorization.js?id=e2e2552d-d95c-b453-c220-e5ef09f52801&c=google-html&u=1470311014" defer="defer" async="async"></script></div>
+<div id="mapDiv1" style='height:100%;overflow:hidden;position:relative;'><div id="canvas-for-google-map" style="height:100%; width:100%;max-width:100%;"></div><a class="google-html" rel="nofollow" href="https://www.hostingreviews.website/compare/hostgator-vs-bluehost" id="grab-map-info">hostgator vs bluehost</a><style>#canvas-for-google-map .text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style></div><script src="https://www.hostingreviews.website/google-maps-authorization.js?id=e2e2552d-d95c-b453-c220-e5ef09f52801&c=google-html&u=1470311014" defer="defer" async="async"></script></div>
 
  <div id="gMain" style="height:500px;width:500px;display:none;"></div>
 	<div  id="cnti-box-tp" style="width: 100%;height: initial;top: initial;bottom: 0;">
