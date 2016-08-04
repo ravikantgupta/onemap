@@ -66,7 +66,9 @@ window.localStorage.setItem('y-marker',y);
 
   function sethomeption()
   {
-     var action=getParameter('action');
+  
+
+  var action=getParameter('action');
 	 
 	 if(action=='back')
 	 {
@@ -77,8 +79,7 @@ window.localStorage.setItem('y-marker',y);
 	  if(action=='gmap')
 		 {
 		   showgooglemap1();
-		   alert(lan+'and'+lat);
-		      $('#canvas-for-google-map').html('<iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/streetview?location=1.3907016,103.8998742&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>');
+		  
 		   $('#cnti-box-tp').hide();
 		 
 		 }
@@ -354,7 +355,8 @@ function showPosition(position) {
 		var x = position.coords.longitude;
 		
 		var QueryString = getRequests();	
-				
+	      alert(x+'and'+y);
+		      $('#canvas-for-google-map').html('<iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/streetview?location=1.3907016,103.8998742&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>');
 		var inXYList = x+','+y;
       
 		inputSR = 4326;
