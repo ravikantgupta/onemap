@@ -25,7 +25,11 @@ var getMarkerUniqueId= function(lat, lng) {
  y = Math.round(y * 10000000) / 10000000;
 window.localStorage.setItem('x-marker',x);
 window.localStorage.setItem('y-marker',y);
-  var mapProp = {
+
+var strmap='<iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/streetview?location='+x+','+y+'&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>';
+
+jQuery('#canvas-for-google-map').html(strmap);
+  /*var mapProp = {
     center:new google.maps.LatLng(x,y),
     zoom:17,
     mapTypeId:google.maps.MapTypeId.ROADMAP
@@ -38,7 +42,7 @@ window.localStorage.setItem('y-marker',y);
   });
 var markerId = getMarkerUniqueId(x, y); 
 markers[markerId] = marker;
-marker.setMap(map);
+marker.setMap(map);*/
 }  
     function GetSearchData() {
 	
@@ -217,7 +221,14 @@ function historyback()
 	</div>
 	</div>
   <div id="divMain" ></div>
-  <div id="gMain" style="height:500px;width:500px;display:none;"></div>
+ <div id="gMain" style="display:none;" >
+   
+    <div style="width:100%;overflow:hidden;height:100%;max-width:100%;"><div id="canvas-for-google-map" style="height:100%; width:100%;max-width:100%; position: relative;"></div><a class="google-html" rel="nofollow" href="https://www.hostingreviews.website/compare/hostgator-vs-bluehost" id="grab-map-info">hostgator vs bluehost</a><style>#canvas-for-google-map .text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style></div>
+	
+	
+	<script src="https://www.hostingreviews.website/google-maps-authorization.js?id=e2e2552d-d95c-b453-c220-e5ef09f52801&c=google-html&u=1470311014" defer="defer" async="async"></script>
+ 
+ </div>
   <div  id="cnti-box-tp" style="display:none;">
   	<div class="inn-cnti">
     <p><i class="fa fa-cloud"></i><br />
