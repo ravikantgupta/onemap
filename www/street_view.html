@@ -10,16 +10,22 @@
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
-	<script src="js/jquery.min.js"></script>
-	<script src="http://maps.googleapis.com/maps/api/js"></script> 	
-	<script src="scripts/jquery-2.1.3.min.js"></script>   
-	<script src="js/jquery.flip.min.js"></script>
-	  <script type='text/JavaScript' src='js/map-api.js'></script>
-  
-   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
-   <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
-					
-		
+		<script src="js/jquery.min.js"></script>
+		<script src="http://maps.googleapis.com/maps/api/js"></script> 	
+		<script src="scripts/jquery-2.1.3.min.js"></script>   
+		<script src="js/jquery.flip.min.js"></script>
+      <script type='text/JavaScript' src='js/map-api.js'></script>
+       <script>
+      var panorama;
+      function showgooglemap1() {
+		 
+	  $('.rht-menu').show();
+       $('#mapDiv1').show();
+	   $('#cnti-box-tp').hide();
+	   
+      }
+</script>
+				
 <script>
 var markers = {};
 var getMarkerUniqueId= function(lat, lng) {
@@ -52,9 +58,11 @@ window.localStorage.setItem('y-marker',y);
 
 
 } 
- //var OneMap = new GetOneMap('mapDiv','SM');  
+  var OneMap = new GetOneMap('mapDiv','SM'); 
 
+    
 </script>
+
 <script>
 
   function sethomeption()
@@ -66,6 +74,40 @@ window.localStorage.setItem('y-marker',y);
 	   jQuery('#flip').click();
 	 
 	 }
+	 
+	 var lat=getParameter('y');
+	 
+	 var lan=getParameter('x');
+	// showVals(lan+','+lat); 
+	 
+	
+	 if(action=='gmap')
+		 {
+		   showgooglemap1();
+		     
+	$('#canvas-for-google-map').html('<iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/streetview?location=1.3907016,103.8998742&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>');
+	 
+		 }
+		 
+		 if(action=='onemap')
+		 {
+		   showonemap();
+		   
+		   $('#cnti-box-tp').hide();
+		 
+		 }
+		 
+		 if(action=='landlot')
+		 {
+		   showlot();
+		   
+		   $('#cnti-box-tp').hide();
+		 
+		 }
+		 
+		 
+		 
+		 
 	 
   }
   
@@ -81,146 +123,27 @@ window.localStorage.setItem('y-marker',y);
   return false;
 }
 
-
-function showsrch()
-	{
-           $('#homesearch').css('transform', 'rotateY(0deg)');
-		   
-		   $('.hm').css('transform','rotateY(180deg)');
-		  $('.compass').hide(); 
-		   
-		   
-		  
-		  
-		   
-		  
-		  
-       
-	}
-	
-function historyback()
-{
-
-          $('#homesearch').css('transform', 'rotateY(180deg)');
-		   
-		   $('.hm').css('transform','rotateY(0deg)');
-		    $('.compass').show(); 
-		  
-		    $('.compass').show(); 
-  
-}
-
-function GetSearchData() {
-
-
-	
-        var basicSearch = new BasicSearch;
-        var searchText = document.getElementById("txtSearchText").value
-        basicSearch.searchVal = searchText;
-        basicSearch.returnGeom = '1';     
-        basicSearch.GetSearchResults(displayData);
-		
-		
-		return false;
-    }
-	
-	function displayData(resultData){debugger;
-        var results = resultData.results;
-        if (results=='No results'){
-            document.getElementById('divResults').innerHTML = "No result(s) found";
-            return false;
-        }
-        else{
-		
-		      var htmlStr = "<table>";
-           
-			var rowcat='';
-			
-			 var catarr = [];
-            for (var i = 0; i < results.length; i++) {
-                var row = results[i];
-				if(row.CATEGORY=="")
-				{
-				}
-				else{
-				catarr[i] = row.CATEGORY;
-				
-				}
-			
-            }
-			 catarr = arrUnique(catarr);
-			
-			for (var y = 0; y < catarr.length; y++) {
-			     var cathtml='<tr class="headingcat"><td> '+catarr[y] +'</td></tr>';
-            for (var i = 0; i < results.length; i++) {
-                var row = results[i];
-    
-               
-             if(catarr[y]==row.CATEGORY.trim())
-				 {
-				     htmlStr = htmlStr + cathtml;
-					htmlStr = htmlStr + "<tr>";
-					htmlStr = htmlStr + "<td>";
-					//console.log(row.X +","+ row.Y);
-					
-					var srrs='"'+row.SEARCHVAL+'"';
-					
-					//htmlStr = htmlStr + "<a onclick='srchrslt("+ row.X +","+ row.Y +"," + srrs + ")' href='JavaScript:ZoomTo("+ row.X +","+ row.Y +")'>" + row.SEARCHVAL + "</a>";
-					
-					htmlStr = htmlStr + "<a  href='search.html?x="+ row.X +"&y="+ row.Y +"&val=" + row.SEARCHVAL + "&action=onmap'>" + row.SEARCHVAL + "</a>";
-					
-					
-					htmlStr = htmlStr + "</td>";
-					htmlStr = htmlStr + "</tr>";
-					cathtml='';
-				}
-            }
-			}
-            htmlStr = htmlStr + "</table>";
-			
-            document.getElementById('divResults').innerHTML = htmlStr;
-       
-		    
-            }
-    }
-	
-	 function arrUnique(a){
-  var t = [];
-  for(var x = 0; x < a.length; x++){
-    if(t.indexOf(a[x]) == -1)t.push(a[x]);
-  }
-  return t;
-}
-
 </script>
+
+<style type="text/css">
+#OneMapLogo{top:0 !important;}
+</style>
  
 </head>
+
 <body onload="sethomeption()">
-
-<div id="homesearch" style="height: 100%; width: 100%;backface-visibility: hidden; transform-style: preserve-3d;position: absolute; z-index: 0; transition: all 0.5s ease-out 0s;transform: rotateY(180deg);">
-		 <div class="front"> 
-		  <div onclick="historyback()" id="menu"><p>Menu</p></div>
-		  <form onsubmit="return GetSearchData()">
-		  <input type="search" id="txtSearchText" name="Search" />
-		  <i class="fa fa-search search-icn"></i>
-		  </form>
-		
-		   <div id="divResults"></div>
-		  </div> 
-  </div> 
-
-<div class="container hm" style="height: 100%; width: 100%;backface-visibility: hidden; transform-style: preserve-3d;position: absolute; z-index: 1; transition: all 0.5s ease-out 0s;transform: rotateY(0deg);">
+<div class="container hm">
 <div class="flip-dv"><div id="flip">
 	<img src="images/sg-logo.png"/>
 <!--<i class="fa fa-bars"></i>--></div></div>
 <div id="panel">
 <div class="menu-top-icon"><img src="images/top-bt.png" /></div>
 <ul>
-<li>
+<li >
 <a href="home.html"><i class="fa fa-home"></i> Home</a>
 </li>
 <li>
-<a href="javascript:void(0)" onclick="showsrch()"><i class="fa fa-search"></i> Search</a>
+<a href="search.html"><i class="fa fa-search"></i> Search</a>
 </li>
 <li>
 <a href="javascript:void(0);" onclick="showhide()"><i class="fa fa-map-marker"></i> Lot View</a>
@@ -243,13 +166,14 @@ function GetSearchData() {
 		<div>Kantelen links-rechts: <span id="tiltLR"></span></div>
 		<div>Richting: <span id="direction"></span></div>
 	</div>
-<div id="mapdiv" style='height:100%;'></div>
+<div id="mapDiv1" style='height:100%;overflow:hidden;position:relative;'><div id="canvas-for-google-map" style="height:100%; width:100%;max-width:100%;"></div><a class="google-html" rel="nofollow" href="https://www.hostingreviews.website/compare/hostgator-vs-bluehost" id="grab-map-info">hostgator vs bluehost</a><style>#canvas-for-google-map .text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style></div><script src="https://www.hostingreviews.website/google-maps-authorization.js?id=e2e2552d-d95c-b453-c220-e5ef09f52801&c=google-html&u=1470311014" defer="defer" async="async"></script></div>
+
  <div id="gMain" style="height:500px;width:500px;display:none;"></div>
-	<div  id="cnti-box-tp" style="display:none;">
+	<div  id="cnti-box-tp" style="height: initial;top: initial;bottom: 0;">
         <div class="inn-cnti">
         <p><i class="fa fa-cloud"></i><br />
         Map</p>
-        <input type="range" id="slider"  value="0.0" min="0.0" max="30.0" step="0.1" />
+        <input type="range" id="slider"  value="30" min="0.0" max="30.0" step="0.1" />
         <p><i class="fa fa-map-marker"></i><br />
         Lot</p>
        </div>
@@ -262,9 +186,10 @@ function GetSearchData() {
                 <li> <a href="javascript:void(0)" onclick="removealllayer()"><img src="images/clear.png" /></a> </li>
                 <li class="parent"><a href="javascript:void(0)" id="mapmenu"><img src="images/map.png" /></a>
                     <ul class="submenu" style="display:none;">
-					      <li> <a href="street_view.html?action=gmap" >Street View</a> </li>
-                          <li> <a href="home_inner.html?action=onemap" >One Map</a> </li>
-                          <li> <a href="home_inner.html?action=landlot" > Land Lot</a> </li>
+					      <li id="googlemp"> <a href="javascript:void(0)" >Street View</a> </li>
+                          <li id="onmp"> <a href="javascript:void(0)" >One Map</a> </li>
+                          <li id="landlot"> <a href="javascript:void(0)" > Land Lot</a> </li>
+						  
 					      <li id="uramenu"> <a href="uramp.html" >URA MP2014</a> </li>
 						  <li id="uralanding"> <a href="uramp.html" >URA Landed Housing Area</a> </li>
 						  <li id="urabuilding"> <a href="uramp.html" >URA Building Height</a> </li>
@@ -371,7 +296,7 @@ function showonemap()
 $('.submenu').hide();
 $('#mapDiv').css('display','block');
 $('#gMain').css('display','none');
- OneMap.map.addLayer(new OM.CustomTileServiceLayer());
+// OneMap.map.addLayer(new OM.CustomTileServiceLayer());
 }
 function showgooglemap()
 {
@@ -405,12 +330,14 @@ OneMap.map.removeLayer(b);
 
  }
   function showmapval(position) {
- 
-var x = position.coords.latitude;
-var y = position.coords.longitude;
-$('#mapDiv').css('display','none');
-$('#gMain').css('display','block');
-initialize(x,y);
+  
+  
+  
+	var x = position.coords.latitude;
+	var y = position.coords.longitude;
+	$('#mapDiv').css('display','none');
+	$('#gMain').css('display','block');
+	initialize(x,y);
 
 
 
@@ -419,13 +346,16 @@ initialize(x,y);
 <script>
 $( document ).ready(function() {
    $('#mybtn').click();
+   
+   //setTimeout(function(){ ltview(); }, 2000);
 });
 function getcurrentpos()
 {
-
+    
     if (navigator.geolocation) {
+	
         navigator.geolocation.getCurrentPosition(showPosition);
-		getLocation();
+		
     } else { 
        alert("not supported by this browserrr");
     }
@@ -438,8 +368,16 @@ function showPosition(position) {
 		console.dir(position);
 		var y = position.coords.latitude;
 		var x = position.coords.longitude;
+		
+		
+		var QueryString = getRequests();	
+		
+		
+		// x=103.8998742;
+		// y=1.3907016;
+		
 		var inXYList = x+','+y;
-
+       //alert(x+','+y);
 		inputSR = 4326;
 
 
@@ -462,7 +400,10 @@ function showPosition(position) {
 
 	OneMap.showLocation(x,y);
 	
-	
+	var googlemp='<a href="home_inner.html?action=gmap&x='+x+'&y='+y+'&txt=Delhi">Google Map</a>';
+    var onmp='<a href="home_inner.html?action=onemap&x='+x+'&y='+y+'&txt=Delhi">One Map</a>';
+    var landlot='<a href="home_inner.html?action=landlot&x='+x+'&y='+y+'&txt=Delhi">Land Lot</a>';
+
 	
 	
 	var srchstring='<a href="uramp.html?x='+x+'&y='+y+'&txt=Delhi">URA MP2014</a>';
@@ -471,7 +412,10 @@ function showPosition(position) {
  
     var srchstringbuilding='<a href="uramp.html?service=bh&x='+x+'&y='+y+'&txt=Delhi">URA Building Height</a>';
 
- 
+    jQuery('#googlemp').html(googlemp);
+	  jQuery('#onmp').html(onmp);
+	  jQuery('#landlot').html(landlot);
+	  
     jQuery('#uramenu').html(srchstring);
  
  
@@ -520,79 +464,88 @@ $(document).on('input change', '#slider', function() {
 var a = $(this).val();
 if(a<1)
 {
-		if(tiled!=""&&count!=1)
+		
+		 window.location='home.html';
+		/*if(tiled!=""&&count!=1)
 		{
 		 
 		OneMap.map.addLayer(new OM.CustomTileServiceLayer()); 
 
 		  
-		}
+		}*/
 }
 
 if(a>29)
 {
 
-            window.location='home_inner.html';
-			
-			/* require(["esri/map", "esri/layers/ArcGISTiledMapServiceLayer", "dojo/domReady!"],
-					function(Map, ArcGISTiledMapServiceLayer) {
-			var _baseMapHost = "http://www.onemap.sg/ArcGIS/rest/services/";
-			var tileHost1 = "http://t1.onemap.sg/ArcGIS/rest/services/"
-			var tileHost2 = "http://t2.onemap.sg/ArcGIS/rest/services/";
-			var _baseMapURL;
-			var _baseMapURL1;
-			var _baseMapURL2;
-					_baseMapURL = _baseMapHost + "LOT_VIEW" + "/MapServer";
-					_baseMapURL1 = tileHost1 + "LOT_VIEW" + "/MapServer";
-					_baseMapURL2 = tileHost2 + "LOT_VIEW" + "/MapServer";
-			   var request = new XMLHttpRequest();
-			   
-					  tiled = new ArcGISTiledMapServiceLayer(_baseMapURL, { tileServers: [_baseMapURL1, _baseMapURL2] });
-					  OneMap.map.addLayer(tiled);
-					  console.log(OneMap.map.layerIds);
-					  
-					}
-				  );*/
+
+ require(["esri/map", "esri/layers/ArcGISTiledMapServiceLayer", "dojo/domReady!"],
+        function(Map, ArcGISTiledMapServiceLayer) {
+var _baseMapHost = "http://www.onemap.sg/ArcGIS/rest/services/";
+var tileHost1 = "http://t1.onemap.sg/ArcGIS/rest/services/"
+var tileHost2 = "http://t2.onemap.sg/ArcGIS/rest/services/";
+var _baseMapURL;
+var _baseMapURL1;
+var _baseMapURL2;
+        _baseMapURL = _baseMapHost + "LOT_VIEW" + "/MapServer";
+        _baseMapURL1 = tileHost1 + "LOT_VIEW" + "/MapServer";
+        _baseMapURL2 = tileHost2 + "LOT_VIEW" + "/MapServer";
+   var request = new XMLHttpRequest();
+   
+          tiled = new ArcGISTiledMapServiceLayer(_baseMapURL, { tileServers: [_baseMapURL1, _baseMapURL2] });
+          OneMap.map.addLayer(tiled);
+		  console.log(OneMap.map.layerIds);
+		  
+        }
+      );
 	  count = count+1;
 }
 
+
+console.log(a);
 });
+
+function ltview(){
+
+
+
+   require(["esri/map", "esri/layers/ArcGISTiledMapServiceLayer", "dojo/domReady!"],
+        function(Map, ArcGISTiledMapServiceLayer) {
+var _baseMapHost = "http://www.onemap.sg/ArcGIS/rest/services/";
+var tileHost1 = "http://t1.onemap.sg/ArcGIS/rest/services/"
+var tileHost2 = "http://t2.onemap.sg/ArcGIS/rest/services/";
+var _baseMapURL;
+var _baseMapURL1;
+var _baseMapURL2;
+        _baseMapURL = _baseMapHost + "LOT_VIEW" + "/MapServer";
+        _baseMapURL1 = tileHost1 + "LOT_VIEW" + "/MapServer";
+        _baseMapURL2 = tileHost2 + "LOT_VIEW" + "/MapServer";
+   var request = new XMLHttpRequest();
+   
+          tiled = new ArcGISTiledMapServiceLayer(_baseMapURL, { tileServers: [_baseMapURL1, _baseMapURL2] });
+          OneMap.map.addLayer(tiled);
+		  console.log(OneMap.map.layerIds);
+		  
+        }
+      );
+
+
+}
 </script>
- 
-        <script>
-				var map;
+<script>
+
+  function getRequests() {
+			var s1 = location.search.substring(1, location.search.length).split('&'),
+				r = {}, s2, i;
+			for (i = 0; i < s1.length; i += 1) {
+				s2 = s1[i].split('=');
+				r[decodeURIComponent(s2[0]).toLowerCase()] = decodeURIComponent(s2[1]);
+			}
+			return r;
+		}
+
+</script>
+
 	
-					
-					
-					function getLocation() {
-					
-					 
-					    
-						if (navigator.geolocation) {
-							navigator.geolocation.getCurrentPosition(showPosition1);
-						} 
-					}
-
-					function showPosition1(position) {
-					
-					
-					
-					     var center = L.bounds([position.coords.latitude, position.coords.longitude],[position.coords.latitude, position.coords.longitude]).getCenter();
-					 map = L.map('mapdiv').setView([center.x, center.y], 17);
-
-					var basemap = L.tileLayer('http://{s}-tiles.sgmap.xyz/v2/Vibrant_City/{z}/{x}/{y}.png', {
-						maxZoom: 18,
-					});
-					basemap.addTo(map);
-					                               		    
-						marker = new L.Marker([position.coords.latitude, position.coords.longitude], {bounceOnAdd: false}).addTo(map);						 
-							var popup = L.popup()
-						   .setLatLng([position.coords.latitude, position.coords.longitude]) 
-						   .setContent('You are here!')
-						   .openOn(map);					
-					}
-
-		</script>
-
 </body>
 </html>

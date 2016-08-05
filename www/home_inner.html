@@ -15,15 +15,7 @@
 		<script src="scripts/jquery-2.1.3.min.js"></script>   
 		<script src="js/jquery.flip.min.js"></script>
       <script type='text/JavaScript' src='js/map-api.js'></script>
-    <script>
-      var panorama;
-      function showgooglemap1() {
-	  $('.rht-menu').show();
-       $('#mapDiv1').show();
-	   $('#cnti-box-tp').hide();
-	   
-      }
-</script>   
+       
 				
 <script>
 var markers = {};
@@ -66,9 +58,7 @@ window.localStorage.setItem('y-marker',y);
 
   function sethomeption()
   {
-  
-
-  var action=getParameter('action');
+     var action=getParameter('action');
 	 
 	 if(action=='back')
 	 {
@@ -78,8 +68,8 @@ window.localStorage.setItem('y-marker',y);
 	 
 	  if(action=='gmap')
 		 {
-		   showgooglemap1();
-		  
+		   showgooglemap();
+		   
 		   $('#cnti-box-tp').hide();
 		 
 		 }
@@ -156,10 +146,10 @@ window.localStorage.setItem('y-marker',y);
 		<div>Kantelen links-rechts: <span id="tiltLR"></span></div>
 		<div>Richting: <span id="direction"></span></div>
 	</div>
-<div id="mapDiv1" style='height:100%;overflow:hidden;position:relative;'><div id="canvas-for-google-map" style="height:100%; width:100%;max-width:100%;"></div><a class="google-html" rel="nofollow" href="https://www.hostingreviews.website/compare/hostgator-vs-bluehost" id="grab-map-info">hostgator vs bluehost</a><style>#canvas-for-google-map .text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style></div><script src="https://www.hostingreviews.website/google-maps-authorization.js?id=e2e2552d-d95c-b453-c220-e5ef09f52801&c=google-html&u=1470311014" defer="defer" async="async"></script></div>
+<div id="mapDiv" style='height:100%;display:none;'></div>
 
  <div id="gMain" style="height:500px;width:500px;display:none;"></div>
-	<div  id="cnti-box-tp" style="width: 100%;height: initial;top: initial;bottom: 0;">
+	<div  id="cnti-box-tp">
         <div class="inn-cnti">
         <p><i class="fa fa-cloud"></i><br />
         Map</p>
@@ -176,7 +166,7 @@ window.localStorage.setItem('y-marker',y);
                 <li> <a href="javascript:void(0)" onclick="removealllayer()"><img src="images/clear.png" /></a> </li>
                 <li class="parent"><a href="javascript:void(0)" id="mapmenu"><img src="images/map.png" /></a>
                     <ul class="submenu" style="display:none;">
-					      <li> <a href="javascript:void(0)" onclick="showgooglemap()">Google Map</a> </li>
+					      <li> <a href="street_view.html?action=gmap" >Street View</a> </li>
                           <li> <a href="javascript:void(0)" onclick="showonemap()">One Map</a> </li>
                           <li> <a href="javascript:void(0)" onclick="showlot()"> Land Lot</a> </li>
 					      <li id="uramenu"> <a href="uramp.html" >URA MP2014</a> </li>
@@ -355,8 +345,7 @@ function showPosition(position) {
 		var x = position.coords.longitude;
 		
 		var QueryString = getRequests();	
-	      alert(x+'and'+y);
-		      $('#canvas-for-google-map').html('<iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/streetview?location=1.3907016,103.8998742&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>');
+				
 		var inXYList = x+','+y;
       
 		inputSR = 4326;
