@@ -262,7 +262,7 @@ function GetSearchData() {
                 <li> <a href="javascript:void(0)" onclick="removealllayer()"><img src="images/clear.png" /></a> </li>
                 <li class="parent"><a href="javascript:void(0)" id="mapmenu"><img src="images/map.png" /></a>
                     <ul class="submenu" style="display:none;">
-					      <li> <a href="street_view.html?action=gmap" >Street View</a> </li>
+					     <li id="googlemp"> <a href="javascript:void(0)" >Street View</a> </li>
                           <li> <a href="home_inner.html?action=onemap" >One Map</a> </li>
                           <li> <a href="home_inner.html?action=landlot" > Land Lot</a> </li>
 					      <li id="uramenu"> <a href="uramp.html" >URA MP2014</a> </li>
@@ -461,7 +461,9 @@ function showPosition(position) {
 	console.log(x+','+y);
 
 	OneMap.showLocation(x,y);
-	
+	var googlemp='<a href="street_view.html?action=gmap&x='+x+'&y='+y+'&txt=Delhi">Street View</a>';
+    var onmp='<a href="home_inner.html?action=onemap&x='+x+'&y='+y+'&txt=Delhi">One Map</a>';
+    var landlot='<a href="home_inner.html?action=landlot&x='+x+'&y='+y+'&txt=Delhi">Land Lot</a>';
 	
 	
 	
@@ -481,7 +483,9 @@ function showPosition(position) {
  jQuery('#urabuilding').html(srchstringbuilding);
 	
 
-	
+	 jQuery('#googlemp').html(googlemp);
+	  jQuery('#onmp').html(onmp);
+	  jQuery('#landlot').html(landlot);
 
 
     
