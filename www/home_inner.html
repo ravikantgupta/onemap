@@ -30,7 +30,7 @@ var getMarkerUniqueId= function(lat, lng) {
  
 window.localStorage.setItem('y-marker',y);
 
-alert(x+' and '+y);
+
 var strmap='<iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/streetview?location='+x+','+y+'&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>';
 
 jQuery('#canvas-for-google-map').html(strmap);
