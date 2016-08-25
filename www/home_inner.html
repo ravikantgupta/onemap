@@ -118,9 +118,33 @@ jQuery('#canvas-for-google-map').html(strmap);
 <style type="text/css">
 #OneMapLogo{top:0 !important;}
 </style>
- 
+ <link rel="stylesheet" href="css/calcite.css">
+    <link rel="stylesheet" href="css/esri.css">
+  <style>
+      html,body {
+        height:100%;
+        width:100%;
+        margin:0;
+      }
+      body {
+        background-color:#FFF;
+        overflow:hidden;
+        font-family:"Trebuchet MS";
+      }
+      #map {
+        border:solid 2px #808775;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        margin:5px;
+        padding:0px;
+      }
+      #titlePane{
+        width:280px;
+      }
+      </style>
 </head>
-<body onload="sethomeption()">
+<body onload="sethomeption()" class="calcite">
 <div class="container hm">
 <div class="flip-dv"><div id="flip">
 	<img src="images/sg-logo.png"/>
@@ -156,7 +180,12 @@ jQuery('#canvas-for-google-map').html(strmap);
 		<div>Richting: <span id="direction"></span></div>
 	</div>
 <div id="mapDiv" style='height:100%;display:none;'></div>
-
+<div id="msr" style="position:absolute; right:20px; top:10px; z-Index:999;display:none;">
+          <div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Measurement', closable:false, open:false">
+            <div id="measurementDiv"></div>
+           
+          </div>
+        </div>
  <div id="gMain" style="display:none;" >
    
     <div style="width:100%;overflow:hidden;height:100%;max-width:100%;"><div id="canvas-for-google-map" style="height:100%; width:100%;max-width:100%; position: relative;"></div><a class="google-html" rel="nofollow" href="https://www.hostingreviews.website/compare/hostgator-vs-bluehost" id="grab-map-info">hostgator vs bluehost</a><style>#canvas-for-google-map .text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style></div>
@@ -178,6 +207,7 @@ jQuery('#canvas-for-google-map').html(strmap);
    <div class="rht-menu">
    		<div class="inner-rht-menu menu-5">
         	<ul class="wtf-menu">
+			 <li><a href="javascript:void(0);" onclick="measurment()"><img src="images/Measure.png" /></a></li>
                 <li><a href="home.html"><img src="images/me.png" /></a></li>
                 <li> <a href="javascript:void(0)" onclick="removealllayer()"><img src="images/clear.png" /></a> </li>
                 <li class="parent"><a href="javascript:void(0)" id="mapmenu"><img src="images/map.png" /></a>
@@ -514,6 +544,85 @@ var _baseMapURL2;
 	  
 
 }
+
+ function measurment()
+	  {
+	   
+	        jQuery('#msr').show(); 
+			
+			
+	if(jQuery("#measurementDiv").is(':empty'))
+		{
+						  require([
+					"dojo/dom",
+					"esri/Color",
+					"dojo/keys",
+					"dojo/parser",
+
+					"esri/config",
+					"esri/sniff",
+					"esri/map",
+					"esri/SnappingManager",
+					"esri/dijit/Measurement",
+					"esri/layers/FeatureLayer",
+					"esri/renderers/SimpleRenderer",
+					"esri/tasks/GeometryService",
+					"esri/symbols/SimpleLineSymbol",
+					"esri/symbols/SimpleFillSymbol",
+
+					"esri/dijit/Scalebar",
+					"dijit/layout/BorderContainer",
+					"dijit/layout/ContentPane",
+					"dijit/TitlePane",
+					"dijit/form/CheckBox",
+					"dojo/domReady!"
+				  ], function(
+					dom, Color, keys, parser,
+					esriConfig, has, Map, SnappingManager, Measurement, FeatureLayer, SimpleRenderer, GeometryService, SimpleLineSymbol, SimpleFillSymbol
+				  ) {
+					parser.parse();
+					//This sample may require a proxy page to handle communications with the ArcGIS Server services. You will need to
+					//replace the url below with the location of a proxy on your machine. See the 'Using the proxy page' help topic
+					//for details on setting up a proxy page.
+					esriConfig.defaults.io.proxyUrl = "/proxy/";
+					esriConfig.defaults.io.alwaysUseProxy = false;
+
+					//This service is for development and testing purposes only. We recommend that you create your own geometry service for use within your applications
+					esriConfig.defaults.geometryService = new GeometryService("https://utility.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+
+				   
+
+					var sfs = new SimpleFillSymbol(
+					  "solid",
+					  new SimpleLineSymbol("solid", new Color([195, 176, 23]), 2),
+					  null
+					);
+
+					var parcelsLayer = new FeatureLayer("https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_LandRecords_Louisville/MapServer/0", {
+					  mode: FeatureLayer.MODE_ONDEMAND,
+					  outFields: ["*"]
+					});
+					parcelsLayer.setRenderer(new SimpleRenderer(sfs));
+					OneMap.map.addLayers([parcelsLayer]);
+
+					//dojo.keys.copyKey maps to CTRL on windows and Cmd on Mac., but has wrong code for Chrome on Mac
+					var snapManager = OneMap.map.enableSnapping({
+					  snapKey: has("mac") ? keys.META : keys.CTRL
+					});
+					var layerInfos = [{
+					  layer: parcelsLayer
+					}];
+					snapManager.setLayerInfos(layerInfos);
+
+					var measurement = new Measurement({
+					 map: OneMap.map
+					}, dom.byId("measurementDiv"));
+					measurement.startup();
+				  });
+						 
+	}	
+			 
+	  }
 </script>
 <script>
 

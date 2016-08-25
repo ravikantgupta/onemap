@@ -145,7 +145,7 @@ body{font-family: Lato; overflow:hidden;}
 #divMain_root, #mapDiv_root{width:100% !important; height:100vh !important;}
 #OneMapLogo{padding-left: 15px; margin-top: 15px;}
 #divMain_gc{}
-.dijitReset{padding: 0px 3px !important; background-color: rgba(255,255,255,1);}
+.dijitReset{padding: 0px 3px !important; background: url(../images/bg.png); /*background: rgba(37, 64, 54, 0.5);*/}
 .dijit.dijitReset.dijitSliderV tbody{border: 1px solid #e5e5e5;}
 #cnti-box-tp{position: absolute; top:0; right:0; background:transparent; height:100vh;}
 .inn-cnti{position: absolute; z-index:9;
@@ -447,8 +447,8 @@ ul.wtf-menu li:nth-last-child(3) a:hover{moz-border-radius:25px 0 0 25px; -webki
 
 .compass {
  position: absolute;
- width: 100px;
- height: 100px;
+ width: 140px;
+ height: 140px;
  margin: 20px auto;
 /* background: #222;*/
  padding: 20px;
@@ -519,8 +519,8 @@ ul.wtf-menu li:nth-last-child(3) a:hover{moz-border-radius:25px 0 0 25px; -webki
 
 .compass {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width:90px;
+    height:90px;
     right: 0;
     top: 0;
     margin: 0;
