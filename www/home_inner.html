@@ -122,7 +122,7 @@ jQuery('#canvas-for-google-map').html(strmap);
  <link rel="stylesheet" href="css/calcite.css">
     <link rel="stylesheet" href="css/esri.css">
   <style>
-      html,body {
+       html,body {
         height:100%;
         width:100%;
         margin:0;
@@ -142,7 +142,27 @@ jQuery('#canvas-for-google-map').html(strmap);
       }
       #titlePane{
         width:280px;
+		margin-top:30px;
       }
+	  
+	  #msr{
+	   position:absolute; 
+	   right:20px; 
+	   top:12px; 
+	   z-Index:999;
+	   display:none;
+	  }
+	  
+@media (max-width:320px){
+#titlePane {
+    width: 170px;
+    margin-top: 30px;
+}
+	  #msr{
+	  right:80px; 
+	  }
+}	  
+	  
       </style>
 </head>
 <body onload="sethomeption()" class="calcite">
