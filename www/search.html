@@ -172,7 +172,7 @@ function historyback()
 
  <link rel="stylesheet" href="css/calcite.css">
     <link rel="stylesheet" href="css/esri.css">
-  <style>
+ <style>
       html,body {
         height:100%;
         width:100%;
@@ -183,10 +183,37 @@ function historyback()
         overflow:hidden;
         font-family:"Trebuchet MS";
       }
-    
+      #map {
+        border:solid 2px #808775;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        margin:5px;
+        padding:0px;
+      }
       #titlePane{
         width:280px;
+		margin-top:30px;
       }
+	  
+	  #msr{
+	   position:absolute; 
+	   right:20px; 
+	   top:12px; 
+	   z-Index:999;
+	   display:none;
+	  }
+	  
+@media (max-width:320px){
+#titlePane {
+    width: 170px;
+    margin-top: 30px;
+}
+	  #msr{
+	  right:80px; 
+	  }
+}	  
+	  
       </style>
  <style> 
 
@@ -377,20 +404,7 @@ var _baseMapURL2;
           tiled = new ArcGISTiledMapServiceLayer(_baseMapURL, { tileServers: [_baseMapURL1, _baseMapURL2] });
           OneMap.map.addLayer(tiled);
 		  
-		  	var template = new PopupTemplate({
-							title: "Land Lot Information {FIPS}",
-
-							fieldInfos: ["*"],
-							mediaInfos: ["*"],
-						  });
-			
-			   var featureLayer = new FeatureLayer("https://services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/Beverly%20Hills%20Trees%20By%20Block/FeatureServer/0", {
-       							infoTemplate: template,
-							outFields: ["*"]
-						  });
-
-                         
-						  OneMap.map.addLayer(featureLayer);
+		  
 		 
 		  
         }

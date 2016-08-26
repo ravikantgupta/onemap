@@ -6431,3 +6431,11 @@ body {
 .calcite .dijitTreeNodeRtl .dijitTreeExpandoClosed:before {
     content: "\e606";
 }
+
+
+@media (max-width:320px){
+.calcite .dijitTitlePaneContentInner {
+    padding: 5px;
+}
+}
+

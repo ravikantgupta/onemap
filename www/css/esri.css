@@ -4673,3 +4673,14 @@ html.esriRtl .calcite .arcgisSearch .searchExpandContainer,html[dir="rtl"] .calc
 .dj_rtl .calcite .esriMeasurement .esriToggleButton .dijitArrowButtonInner {
     float: left;
 }
+
+
+@media (max-width:320px){
+.calcite .esriMeasurement .esriButton {
+    float: left;
+    /*width: 33.3333333333%;*/
+	width: 30%;
+    margin-bottom: 5%;
+    position: relative;
+}
+}
