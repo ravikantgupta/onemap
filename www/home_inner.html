@@ -122,7 +122,7 @@ jQuery('#canvas-for-google-map').html(strmap);
  <link rel="stylesheet" href="css/calcite.css">
     <link rel="stylesheet" href="css/esri.css">
   <style>
-       html,body {
+      html,body {
         height:100%;
         width:100%;
         margin:0;
@@ -152,6 +152,11 @@ jQuery('#canvas-for-google-map').html(strmap);
 	   z-Index:999;
 	   display:none;
 	  }
+	  
+	  .crooss{
+	   position: absolute;  color: rgb(255, 255, 255);  font-size: 14px; right: 12px; top: 40px; text-decoration:none;
+	  }
+	  
 	  
 @media (max-width:320px){
 #titlePane {
@@ -202,6 +207,7 @@ jQuery('#canvas-for-google-map').html(strmap);
 	</div>
 <div id="mapDiv" style='height:100%;display:none;'></div>
 <div id="msr" style="position:absolute; right:20px; top:10px; z-Index:999;display:none;">
+<div><a href="javascript:void(0)" onclick="closemsr()" class="crooss">X</a></div>
           <div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Measurement', closable:false, open:false">
             <div id="measurementDiv"></div>
            
@@ -639,10 +645,30 @@ var _baseMapURL2;
 					 map: OneMap.map
 					}, dom.byId("measurementDiv"));
 					measurement.startup();
+					
+					
+					jQuery('.esriButton').each(function(){
+		
+		      if(jQuery(this).attr('widgetid')=='dijit_form_ToggleButton_2')
+			  {
+               jQuery(this).remove();
+			  }	
+				
+             });
+					
+					
 				  });
 						 
 	}	
 			 
+	  }
+	  
+	  
+	  function closemsr()
+	  {
+	  
+	      jQuery('#msr').hide();
+	  
 	  }
 </script>
 <script>

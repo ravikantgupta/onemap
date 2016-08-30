@@ -205,6 +205,11 @@ function historyback()
 	   display:none;
 	  }
 	  
+	  .crooss{
+	   position: absolute;  color: rgb(255, 255, 255);  font-size: 14px; right: 12px; top: 40px; text-decoration:none;
+	  }
+	  
+	  
 @media (max-width:320px){
 #titlePane {
     width: 170px;
@@ -269,6 +274,7 @@ function historyback()
 	</div>
   <div id="divMain" ></div>
   <div id="msr" style="position:absolute; right:20px; top:10px; z-Index:999;display:none;">
+  <div><a href="javascript:void(0)" onclick="closemsr()" class="crooss">X</a></div>
           <div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Measurement', closable:false, open:false">
             <div id="measurementDiv"></div>
            
@@ -698,10 +704,30 @@ function setzoom()
          map: OneMap.map
         }, dom.byId("measurementDiv"));
         measurement.startup();
+		
+		
+		jQuery('.esriButton').each(function(){
+		
+		      if(jQuery(this).attr('widgetid')=='dijit_form_ToggleButton_2')
+			  {
+               jQuery(this).remove();
+			  }	
+				
+             });
+		
+		
       });
 			 
 	 }	 	 
 			 
+	  }
+	  
+	  
+	    function closemsr()
+	  {
+	  
+	      jQuery('#msr').hide();
+	  
 	  }
 
 </script>

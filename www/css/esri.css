@@ -4548,6 +4548,7 @@ html.esriRtl .calcite .arcgisSearch .searchExpandContainer,html[dir="rtl"] .calc
     /*width: 33.3333333333%;*/
 	width: 19%;
     margin-bottom: 5%;
+	margin-right:5px;
     position: relative;
 }
 
@@ -4633,6 +4634,7 @@ html.esriRtl .calcite .arcgisSearch .searchExpandContainer,html[dir="rtl"] .calc
 .calcite .esriMeasurement .esriMeasurementTableRow,.calcite .esriMeasurement .result {
     font-weight: 700;
     font-size: 13px;
+	color:#FFF;
 }
 
 .calcite .esriMeasurement .esriMeasurementTableHeader {
