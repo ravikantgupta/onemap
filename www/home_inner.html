@@ -188,6 +188,9 @@ jQuery('#canvas-for-google-map').html(strmap);
 <a href="javascript:void(0);" onclick="showhide()"><i class="fa fa-map-marker"></i> Lot View</a>
 </li>
 <li>
+<a href="javascript:void(0);" onclick="measurment()"><img src="images/Measure-icon.png" /> Tool</a>
+</li>
+<li>
 <a href="javascript:void(0);" onclick="logout()"><i class="fa fa-sign-out"></i> Log Out</a>
 </li>
 </ul>
@@ -655,11 +658,21 @@ var _baseMapURL2;
 			  }	
 				
              });
-					
+			
+
+           		jQuery('#titlePane_titleBarNode').click();	
 					
 				  });
 						 
-	}	
+	}
+
+      if (jQuery('.rwded').length > 0 ) {
+                   jQuery('#flip').click();
+           }
+		   
+		   if (jQuery('.dijitClosed').length > 0 ) {
+                    jQuery('#titlePane_titleBarNode').click();
+           }	
 			 
 	  }
 	  

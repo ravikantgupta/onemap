@@ -173,7 +173,7 @@ function historyback()
 
  <link rel="stylesheet" href="css/calcite.css">
     <link rel="stylesheet" href="css/esri.css">
- <style>
+  <style>
       html,body {
         height:100%;
         width:100%;
@@ -221,9 +221,7 @@ function historyback()
 }	  
 	  
       </style>
- <style> 
 
-</style> 
 </head>
 <body onload="setzoom()" class="calcite">
 <div id="srchcont" class="container newcont">
@@ -241,6 +239,11 @@ function historyback()
 <li>
 <a href="javascript:void(0);" onclick="showhide()"><i class="fa fa-map-marker"></i> Lot View</a>
 </li>
+
+ <li>
+<a href="javascript:void(0);" onclick="measurment()"><img src="images/Measure-icon.png" /> Tool</a>
+</li>
+
 <li>
 <a href="javascript:void(0);" onclick="logout()"><i class="fa fa-sign-out"></i> Log Out</a>
 </li>
@@ -715,10 +718,20 @@ function setzoom()
 				
              });
 		
-		
+		jQuery('#titlePane_titleBarNode').click();
       });
 			 
-	 }	 	 
+	 }
+
+
+         if (jQuery('.rwded').length > 0 ) {
+                   jQuery('#flip').click();
+           }
+		   
+		   if (jQuery('.dijitClosed').length > 0 ) {
+                    jQuery('#titlePane_titleBarNode').click();
+           }                
+				
 			 
 	  }
 	  
