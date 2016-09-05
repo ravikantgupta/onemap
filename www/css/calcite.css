@@ -5994,11 +5994,11 @@ body {
 }
 
 .calcite .dijitTitlePaneContentOuter {
-    border-top: 1px solid #333;
+  /*  border-top: 1px solid #333;*/
 }
 
 .calcite .dijitTitlePaneContentInner {
-    padding: 15px;
+   /* padding: 15px;*/
 }
 
 .calcite .dijitTitlePaneTextNode {
@@ -6435,7 +6435,7 @@ body {
 
 @media (max-width:320px){
 .calcite .dijitTitlePaneContentInner {
-    padding: 5px;
+    padding: 0px;
 }
 }
 

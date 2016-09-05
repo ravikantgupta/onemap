@@ -121,7 +121,7 @@ jQuery('#canvas-for-google-map').html(strmap);
 </style>
  <link rel="stylesheet" href="css/calcite.css">
     <link rel="stylesheet" href="css/esri.css">
-  <style>
+ <style>
       html,body {
         height:100%;
         width:100%;
@@ -148,7 +148,7 @@ jQuery('#canvas-for-google-map').html(strmap);
 	  #msr{
 	   position:absolute; 
 	   right:20px; 
-	   top:12px; 
+	   top:9px; 
 	   z-Index:999;
 	   display:none;
 	  }
@@ -158,13 +158,14 @@ jQuery('#canvas-for-google-map').html(strmap);
 	  }
 	  
 	  
-@media (max-width:320px){
+@media (max-width:768px){
 #titlePane {
     width: 170px;
     margin-top: 30px;
 }
 	  #msr{
-	  right:80px; 
+	  right: 62px;
+      top: 50px;
 	  }
 }	  
 	  
@@ -211,7 +212,7 @@ jQuery('#canvas-for-google-map').html(strmap);
 <div id="mapDiv" style='height:100%;display:none;'></div>
 <div id="msr" style="position:absolute; right:20px; top:10px; z-Index:999;display:none;">
 <div><a href="javascript:void(0)" onclick="closemsr()" class="crooss">X</a></div>
-          <div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Measurement', closable:false, open:false">
+          <div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'', closable:false, open:false">
             <div id="measurementDiv"></div>
            
           </div>

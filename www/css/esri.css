@@ -4548,7 +4548,8 @@ html.esriRtl .calcite .arcgisSearch .searchExpandContainer,html[dir="rtl"] .calc
     /*width: 33.3333333333%;*/
 	width: 19%;
     margin-bottom: 5%;
-	margin-right:5px;
+	margin-right:10px;
+	margin-left:20%;
     position: relative;
 }
 
@@ -4616,9 +4617,9 @@ html.esriRtl .calcite .arcgisSearch .searchExpandContainer,html[dir="rtl"] .calc
 }
 
 .calcite .esriMeasurement .esriMeasurementResultLabel {
-    border-top: 1px solid #efefef;
     padding: 10px;
     color: #fff;
+	display:none;
     text-align: center;
 }
 
@@ -4676,6 +4677,17 @@ html.esriRtl .calcite .arcgisSearch .searchExpandContainer,html[dir="rtl"] .calc
     float: left;
 }
 
+@media (max-width:768px){
+.calcite .esriMeasurement .esriMeasurementSeparator{
+	display:none;
+}	
+
+.calcite .esriMeasurement .esriToggleButton{
+	margin-top:0;
+	background:none;
+}
+}
+
 
 @media (max-width:320px){
 .calcite .esriMeasurement .esriButton {
@@ -4685,4 +4697,11 @@ html.esriRtl .calcite .arcgisSearch .searchExpandContainer,html[dir="rtl"] .calc
     margin-bottom: 5%;
     position: relative;
 }
+
+.calcite .esriMeasurement .esriMeasurementSeparator{
+	display:none;
+}
+
+
+
 }

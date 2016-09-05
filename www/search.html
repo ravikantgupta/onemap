@@ -200,7 +200,7 @@ function historyback()
 	  #msr{
 	   position:absolute; 
 	   right:20px; 
-	   top:12px; 
+	   top:9px; 
 	   z-Index:999;
 	   display:none;
 	  }
@@ -210,13 +210,14 @@ function historyback()
 	  }
 	  
 	  
-@media (max-width:320px){
+@media (max-width:768px){
 #titlePane {
     width: 170px;
     margin-top: 30px;
 }
 	  #msr{
-	  right:80px; 
+	  right: 62px;
+      top: 50px;
 	  }
 }	  
 	  
@@ -278,7 +279,7 @@ function historyback()
   <div id="divMain" ></div>
   <div id="msr" style="position:absolute; right:20px; top:10px; z-Index:999;display:none;">
   <div><a href="javascript:void(0)" onclick="closemsr()" class="crooss">X</a></div>
-          <div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Measurement', closable:false, open:false">
+          <div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'', closable:false, open:false">
             <div id="measurementDiv"></div>
            
           </div>
