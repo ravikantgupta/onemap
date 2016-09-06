@@ -141,16 +141,16 @@ jQuery('#canvas-for-google-map').html(strmap);
         padding:0px;
       }
       #titlePane{
-        width:280px;
-		margin-top:30px;
+        width:335px;
+		margin-top:35px;
       }
 	  
 	  #msr{
 	   position:absolute; 
-	   right:20px; 
-	   top:9px; 
+	   right:0px; 
 	   z-Index:999;
 	   display:none;
+	   bottom: 85px;
 	  }
 	  
 	  .crooss{
@@ -158,16 +158,31 @@ jQuery('#canvas-for-google-map').html(strmap);
 	  }
 	  
 	  
-@media (max-width:768px){
-#titlePane {
-    width: 170px;
-    margin-top: 30px;
-}
+@media (max-width:1024px){
 	  #msr{
-	  right: 62px;
-      top: 50px;
+	  right:0px;
+      bottom: 85px;
 	  }
-}	  
+	  
+#titlePane{
+        width:336px;
+    margin-top: 37px;
+      }	  
+	  
+}		  
+	  
+@media (max-width:768px){
+	  #msr{
+	  right:0px;
+      bottom: 85px;
+	  }
+	  
+#titlePane{
+        width: 234px;
+    margin-top: 37px;
+      }	  
+	  
+}		  
 	  
       </style>
 </head>
@@ -210,13 +225,7 @@ jQuery('#canvas-for-google-map').html(strmap);
 		<div>Richting: <span id="direction"></span></div>
 	</div>
 <div id="mapDiv" style='height:100%;display:none;'></div>
-<div id="msr" style="position:absolute; right:20px; top:10px; z-Index:999;display:none;">
-<div><a href="javascript:void(0)" onclick="closemsr()" class="crooss">X</a></div>
-          <div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'', closable:false, open:false">
-            <div id="measurementDiv"></div>
-           
-          </div>
-        </div>
+
  <div id="gMain" style="display:none;" >
    
     <div style="width:100%;overflow:hidden;height:100%;max-width:100%;"><div id="canvas-for-google-map" style="height:100%; width:100%;max-width:100%; position: relative;"></div><a class="google-html" rel="nofollow" href="https://www.hostingreviews.website/compare/hostgator-vs-bluehost" id="grab-map-info">hostgator vs bluehost</a><style>#canvas-for-google-map .text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style></div>
@@ -234,7 +243,13 @@ jQuery('#canvas-for-google-map').html(strmap);
         Lot</p>
        </div>
    </div>
-   
+   <div id="msr">
+  <div><a href="javascript:void(0)" onclick="closemsr()" class="crooss">X</a></div>
+          <div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'', closable:false, open:false">
+            <div id="measurementDiv"></div>
+           
+          </div>
+        </div>
    <div class="rht-menu">
    		<div class="inner-rht-menu menu-5">
         	<ul class="wtf-menu">

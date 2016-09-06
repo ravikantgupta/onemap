@@ -193,32 +193,56 @@ function historyback()
         padding:0px;
       }
       #titlePane{
-        width:280px;
-		margin-top:30px;
+        width:335px;
+		margin-top:35px;
       }
 	  
 	  #msr{
 	   position:absolute; 
-	   right:20px; 
-	   top:9px; 
+	   right:0px; 
 	   z-Index:999;
 	   display:none;
+	   bottom: 85px;
 	  }
+	  
+/*	  #msr {
+    bottom: 85px;
+    display: none;
+    position: absolute;
+    right: 54px;
+    z-index: 999;
+}*/
 	  
 	  .crooss{
 	   position: absolute;  color: rgb(255, 255, 255);  font-size: 14px; right: 12px; top: 40px; text-decoration:none;
 	  }
+
+
+
+@media (max-width:1024px){
+	  #msr{
+	  right:0px;
+      bottom: 85px;
+	  }
 	  
+#titlePane{
+        width:336px;
+    margin-top: 37px;
+      }	  
+	  
+}		  
 	  
 @media (max-width:768px){
-#titlePane {
-    width: 170px;
-    margin-top: 30px;
-}
 	  #msr{
-	  right: 62px;
-      top: 50px;
+	  right:0px;
+      bottom: 85px;
 	  }
+	  
+#titlePane{
+        width: 234px;
+    margin-top: 37px;
+      }	  
+	  
 }	  
 	  
       </style>
@@ -277,13 +301,7 @@ function historyback()
 	</div>
 	</div>
   <div id="divMain" ></div>
-  <div id="msr" style="position:absolute; right:20px; top:10px; z-Index:999;display:none;">
-  <div><a href="javascript:void(0)" onclick="closemsr()" class="crooss">X</a></div>
-          <div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'', closable:false, open:false">
-            <div id="measurementDiv"></div>
-           
-          </div>
-        </div>
+ 
  <div id="gMain" style="display:none;" >
    
     <div style="width:100%;overflow:hidden;height:100%;max-width:100%;"><div id="canvas-for-google-map" style="height:100%; width:100%;max-width:100%; position: relative;"></div><a class="google-html" rel="nofollow" href="https://www.hostingreviews.website/compare/hostgator-vs-bluehost" id="grab-map-info">hostgator vs bluehost</a><style>#canvas-for-google-map .text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style></div>
@@ -304,7 +322,14 @@ function historyback()
   </div> 
 </div>
 </div>
-
+<div id="msr">
+  <div><a href="javascript:void(0)" onclick="closemsr()" class="crooss">X</a></div>
+          <div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'', closable:false, open:false">
+          
+            <div id="measurementDiv"></div>
+           
+          </div>
+        </div>
  <div class="rht-menu" style="display:none;" id="btmenu">
    		<div class="inner-rht-menu menu-5">
         				
