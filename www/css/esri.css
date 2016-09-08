@@ -4532,11 +4532,12 @@ html.esriRtl .calcite .arcgisSearch .searchExpandContainer,html[dir="rtl"] .calc
 }
 
 .calcite .esriMeasurement .distanceIcon {
-    background-image: url(../images/f.png);
+    background-image: url(../images/n.png);
 }
 
 .calcite .esriMeasurement .areaIcon {
-    background-image: url(../images/n.png);
+    
+	background-image: url(../images/f.png);
 }
 
 .calcite .esriMeasurement .locationIcon {
