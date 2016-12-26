@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
 <script src="js/jquery.min.js"></script>	
- <script src="https://js.arcgis.com/3.17/"></script>
+<script src="https://js.arcgis.com/3.17/"></script>
 <script src="http://maps.googleapis.com/maps/api/js"></script> 
 <script src="js/jquery.flip.min.js"></script>
   <script type='text/JavaScript' src='js/map-api.js'></script>
@@ -169,8 +169,11 @@ function historyback()
   
 }	
 
-</script> 
-  <link rel="stylesheet" href="css/calcite.css">
+</script>  
+
+
+
+ <link rel="stylesheet" href="css/calcite.css">
     <link rel="stylesheet" href="css/esri.css">
   <style>
       html,body {
@@ -263,14 +266,14 @@ function historyback()
 <li>
 <a href="javascript:void(0);" onclick="showhide()"><i class="fa fa-map-marker"></i> Lot View</a>
 </li>
-<li>
+
+ <li>
 <a href="javascript:void(0);" onclick="measurment()"><img src="images/Measure-icon.png" /> Tool</a>
 </li>
+
 <li>
-<a href="javascript:void(0);" onclick="logout()"><i  class="fa fa-sign-out" ></i> Log Out</a>
+<a href="javascript:void(0);" onclick="logout()"><i class="fa fa-sign-out"></i> Log Out</a>
 </li>
-
-
 </ul>
 </div>
 <div id="content" class="search-page">
@@ -301,7 +304,6 @@ function historyback()
 	</div>
   <div id="divMain" ></div>
  
-  
  <div id="gMain" style="display:none;" >
    
     <div style="width:100%;overflow:hidden;height:100%;max-width:100%;"><div id="canvas-for-google-map" style="height:100%; width:100%;max-width:100%; position: relative;"></div><a class="google-html" rel="nofollow" href="https://www.hostingreviews.website/compare/hostgator-vs-bluehost" id="grab-map-info">hostgator vs bluehost</a><style>#canvas-for-google-map .text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style></div>
@@ -334,13 +336,12 @@ function historyback()
    		<div class="inner-rht-menu menu-5">
         				
 			<ul class="wtf-menu">
-			  <li><a href="javascript:void(0);" onclick="measurment()"><img src="images/Measure.png" /></a></li>
+			 <li><a href="javascript:void(0);" onclick="measurment()"><img src="images/Measure.png" /></a></li>
                 <li><a href="home.html"><img src="images/me.png" /></a></li>
                 <li> <a href="javascript:void(0)" onclick="removealllayer()"><img src="images/clear.png" /></a> </li>
                 <li class="parent"><a href="javascript:void(0)" id="mapmenu"><img src="images/map.png" /></a>
                     <ul class="submenu" style="display:none;">
-					
-					    <li> <a href="javascript:void(0)" onclick="showgooglemap()">Street View</a> </li>
+					<li> <a href="javascript:void(0)" onclick="showgooglemap()">Street View</a> </li>
 					      
 					     <li> <a href="javascript:void(0)" onclick="showonemap()">One Map</a> </li> 
 						 <li> <a href="javascript:void(0)" onclick="showlot()"> Land Lot</a> </li>
@@ -441,20 +442,7 @@ var _baseMapURL2;
           tiled = new ArcGISTiledMapServiceLayer(_baseMapURL, { tileServers: [_baseMapURL1, _baseMapURL2] });
           OneMap.map.addLayer(tiled);
 		  
-		  	var template = new PopupTemplate({
-							title: "Land Lot Information {FIPS}",
-
-							fieldInfos: ["*"],
-							mediaInfos: ["*"],
-						  });
-			
-			   var featureLayer = new FeatureLayer("https://services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/Beverly%20Hills%20Trees%20By%20Block/FeatureServer/0", {
-       							infoTemplate: template,
-							outFields: ["*"]
-						  });
-
-                         
-						  OneMap.map.addLayer(featureLayer);
+		  
 		 
 		  
         }
@@ -675,7 +663,8 @@ function setzoom()
      
       }
 	  
-	  function measurment()
+	  
+	   function measurment()
 	  {
 	   
 	        jQuery('#msr').show(); 
@@ -747,6 +736,7 @@ function setzoom()
         }, dom.byId("measurementDiv"));
         measurement.startup();
 		
+		
 		jQuery('.esriButton').each(function(){
 		
 		      if(jQuery(this).attr('widgetid')=='dijit_form_ToggleButton_2')
@@ -755,37 +745,32 @@ function setzoom()
 			  }	
 				
              });
-			    jQuery('#titlePane_titleBarNode').click();
-      });
-	  
-	  
-	 
 		
+		jQuery('#titlePane_titleBarNode').click();
+      });
 			 
 	 }
 
-	    
-		if (jQuery('.rwded').length > 0 ) {
+
+         if (jQuery('.rwded').length > 0 ) {
                    jQuery('#flip').click();
            }
 		   
 		   if (jQuery('.dijitClosed').length > 0 ) {
                     jQuery('#titlePane_titleBarNode').click();
-           }
-
-
-	 
+           }                
+				
 			 
 	  }
 	  
 	  
-	function closemsr()
+	    function closemsr()
 	  {
 	  
 	      jQuery('#msr').hide();
 	  
 	  }
+
 </script>
-  
 </body>
 </html>
